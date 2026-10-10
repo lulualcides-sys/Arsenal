@@ -9,3 +9,7 @@
 - **WildVox**: código no repositório [wildvox-automation](https://github.com/lulualcides-sys/wildvox-automation); evitar duplicação de vídeos, contas/tokens e materiais licenciados.
 
 Nenhum uso desse repositório deve violar acesso a APIs, paywall, DRM ou licenças de dados externos.
+
+## Adição REA + 17 ferramentas (10/10/2026)
+
+O Arsenal inclui 18 novos **submódulos Git** em commits fixos: REA, oito projetos StoryTold, Superpowers, Postiz, Hindsight, Sim, OpenCode, SoccerData, SoccerAction, AnyPS5 e Coolify. Os 162 repositórios do catálogo completo não estão todos como submódulos; a maioria é **referência**. Cada repositório mantém suas próprias obrigações de licença, ativos e requisitos técnicos. **Nenhum foi instalado no NEXUS ou WildVox por esta operação.**

@@ -1,3 +1,5 @@
+> **ATUALIZAÇÃO IMPORTANTE:** Depois deste levantamento foram adicionados **7 documentos originais**, **18 submódulos Git de ferramentas** (incluindo **REA**) e o [inventário completo de 162 repositórios GitHub](../ferramentas/INVENTARIO-COMPLETO.md). O número 37 abaixo se refere apenas ao lote anterior de arquivos, não ao total atual.
+
 # Arquivos adicionados ao Arsenal — verificado em 10/10/2026
 
 > Inventário de **arquivos armazenados neste repositório**, além do **código-fonte original do Emerald Arena** na pasta `fontes/emerald-arena` (submódulo). Uma entrada externa no catálogo de ferramentas não significa que seu código foi baixado ou instalado.

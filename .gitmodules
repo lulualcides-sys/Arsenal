@@ -1,3 +1,57 @@
 [submodule "fontes/emerald-arena"]
 	path = fontes/emerald-arena
 	url = https://github.com/GBurgardt/pokemon-emerald-arena.git
+[submodule "fontes/rea"]
+	path = fontes/rea
+	url = https://github.com/morluto/rea.git
+[submodule "fontes/ferramentas/artcraft"]
+	path = fontes/ferramentas/artcraft
+	url = https://github.com/storytold/artcraft.git
+[submodule "fontes/ferramentas/filmcraft"]
+	path = fontes/ferramentas/filmcraft
+	url = https://github.com/storytold/filmcraft.git
+[submodule "fontes/ferramentas/photocraft"]
+	path = fontes/ferramentas/photocraft
+	url = https://github.com/storytold/photocraft.git
+[submodule "fontes/ferramentas/effectcraft"]
+	path = fontes/ferramentas/effectcraft
+	url = https://github.com/storytold/effectcraft.git
+[submodule "fontes/ferramentas/vectorcraft"]
+	path = fontes/ferramentas/vectorcraft
+	url = https://github.com/storytold/vectorcraft.git
+[submodule "fontes/ferramentas/lightcraft"]
+	path = fontes/ferramentas/lightcraft
+	url = https://github.com/storytold/lightcraft.git
+[submodule "fontes/ferramentas/designcraft"]
+	path = fontes/ferramentas/designcraft
+	url = https://github.com/storytold/designcraft.git
+[submodule "fontes/ferramentas/pdfcraft"]
+	path = fontes/ferramentas/pdfcraft
+	url = https://github.com/storytold/pdfcraft.git
+[submodule "fontes/ferramentas/superpowers"]
+	path = fontes/ferramentas/superpowers
+	url = https://github.com/obra/superpowers.git
+[submodule "fontes/ferramentas/postiz"]
+	path = fontes/ferramentas/postiz
+	url = https://github.com/gitroomhq/postiz-app.git
+[submodule "fontes/ferramentas/hindsight"]
+	path = fontes/ferramentas/hindsight
+	url = https://github.com/vectorize-io/hindsight.git
+[submodule "fontes/ferramentas/sim"]
+	path = fontes/ferramentas/sim
+	url = https://github.com/simstudioai/sim.git
+[submodule "fontes/ferramentas/opencode"]
+	path = fontes/ferramentas/opencode
+	url = https://github.com/anomalyco/opencode.git
+[submodule "fontes/ferramentas/soccerdata"]
+	path = fontes/ferramentas/soccerdata
+	url = https://github.com/probberechts/soccerdata.git
+[submodule "fontes/ferramentas/socceraction"]
+	path = fontes/ferramentas/socceraction
+	url = https://github.com/ML-KULeuven/socceraction.git
+[submodule "fontes/ferramentas/anyps5"]
+	path = fontes/ferramentas/anyps5
+	url = https://github.com/boykopovar/AnyPS5.git
+[submodule "fontes/ferramentas/coolify"]
+	path = fontes/ferramentas/coolify
+	url = https://github.com/coollabsio/coolify.git

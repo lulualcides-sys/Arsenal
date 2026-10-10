@@ -1,3 +1,5 @@
+> **ATUALIZAÇÃO:** Este era o catálogo **inicial de 43 ferramentas e fontes**. Recuperamos as listas originais e ampliamos o [inventário para 162 repositórios GitHub](INVENTARIO-COMPLETO.md), incluindo [REA](../fontes/rea), ferramentas de IA, edição, vídeo, voz e infraestrutura. Nenhuma entrada antiga foi apagada.
+
 # Inventário geral do Arsenal — 10/10/2026
 
 Este documento cataloga **todas as ferramentas importantes recuperadas das pesquisas e dos projetos**. Nem toda referência é um software instalado: a coluna informa se é motor de código, fonte de dados, biblioteca ou inspiração. Veja [arquivos efetivamente armazenados](../docs/ARQUIVOS-ENVIADOS.md).
