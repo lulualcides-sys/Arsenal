@@ -1,18 +1,31 @@
-# Pokémon Torre — implementação nativa experimental
+# Pokémon Torre — integração nativa com Emerald Arena
 
-Objetivo: **combate do Emerald Arena original**, evoluções e captura integradas ao sistema original, com progressão em torre: escolher um inicial nível 5, enfrentar 6 treinadores e 1 líder por ginásio, capturar nos intervalos, evoluir a equipe.
+**Já existem nesta pasta os arquivos autorais da integração experimental**:
 
-**Situação:** a primeira integração local contém 14 etapas (Voador + Água) com testes de lógica em C e instalador Python; **a ROM ainda não foi compilada**. O primeiro protótipo nativo ainda requer uma interface de torre definitiva.
+- [`overlay/src/arena_tower.inc`](overlay/src/arena_tower.inc): 14 desafios (6 treinadores + líder Voador e 6 + líder Água), montagem das equipes, captura e entrada nas batalhas nativas.
+- [`overlay/src/arena_tower_progress.h`](overlay/src/arena_tower_progress.h): regras de avanço após vitória e estágios.
+- [`overlay/src/arena_tower_event.inc`](overlay/src/arena_tower_event.inc): script de retorno.
+- [`overlay/src/arena_tower_installer.py`](overlay/src/arena_tower_installer.py): injeta integração em uma cópia do workspace GBA compatível.
+- [`tests/`](tests/): testes host em C/Python; **não equivalem a testes de ROM jogável**.
+- [`LEIA-ME-EMERALD-TORRE.md`](LEIA-ME-EMERALD-TORRE.md): documentação técnica detalhada.
 
-- Código do motor e fontes completos: [`fontes/emerald-arena`](../fontes/emerald-arena) (submódulo de referência).
-- A implementação precisa aplicar o patch `game/native-engine.patch` do upstream em uma revisão compatível de `pret/pokeemerald`, incluir os arquivos da Torre e compilar usando toolchain GBA.
-- Não incluir ROM comercial.
+### Como obter motor completo
 
-## Jogabilidade pretendida
-1. Escolha Bulbasaur / Charmander / Squirtle no nível 5.
-2. Seis treinadores do tipo do ginásio, depois o líder.
-3. Captura opcional na grama entre desafios.
-4. XP e evolução nativos; derrota não desbloqueia próxima etapa.
-5. Progredir por ginásios e manter saves.
+O Emerald Arena original está em [`fontes/emerald-arena`](../fontes/emerald-arena) como submódulo na versão fixada. Clone com:
 
-Consulte [status de licenças](../docs/STATUS-E-LICENCAS.md).
+```bash
+git clone --recurse-submodules https://github.com/lulualcides-sys/Arsenal.git
+```
+
+O motor do Emerald Arena **não é reimplementado em HTML** aqui. O código C original permanece intacto e separado da nossa integração.
+
+### Regras do modo Torre
+
+1. Escolher Bulbasaur, Charmander ou Squirtle **nível 5**, sem inicial evoluído.
+2. Enfrentar seis treinadores do tipo do ginásio.
+3. Derrotar o líder (Winona Voador; Juan Água na primeira etapa).
+4. Entre as lutas, encontros selvagens para enfraquecer e capturar Pokémon.
+5. Progredir apenas após vitória; evoluir por experiência no motor Pokémon.
+6. Planejar os demais ginásios sem mascarar que ainda não foram implementados no GBA.
+
+**Estado:** código experimental entregue, **ROM não compilada**, **emulação real pendente**, menu definitivo sem exploração ainda não implementado. Não incluir ROM comercial no Git.
