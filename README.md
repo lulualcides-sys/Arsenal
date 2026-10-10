@@ -14,6 +14,8 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > ⚠️ O repositório é **público**: não incluir ROMs comerciais, conteúdo privado do NEXUS, senhas, tokens, relatórios pessoais, vídeos protegidos ou arquivos de usuários.
 
+> **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
+
 ## Seções
 
 | Caminho | O que você encontra |
