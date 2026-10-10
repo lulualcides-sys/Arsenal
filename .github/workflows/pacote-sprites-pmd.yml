@@ -1,0 +1,32 @@
+name: Gerar ZIP sprites detalhados PMDCollab
+
+on:
+  push:
+    paths:
+      - "ferramentas/gerar_sprites_detalhados.py"
+      - ".github/workflows/pacote-sprites-pmd.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Preparar imagem Pillow
+        run: python -m pip install --disable-pip-version-check pillow==11.3.0
+      - name: Baixar SpriteCollab e montar ZIP
+        run: python ferramentas/gerar_sprites_detalhados.py
+      - name: Publicar pacote como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Pokemon_10_Sprites_Detalhados
+          path: dist/Pokemon_10_Sprites_Detalhados_SpriteCollab.zip
+          retention-days: 14
+          if-no-files-found: error
