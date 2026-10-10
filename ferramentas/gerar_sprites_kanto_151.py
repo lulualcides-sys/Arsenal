@@ -56,6 +56,24 @@ def horizontal_strip(raw,fw,fh):
     return png_bytes(out),png_bytes(first),cols
 
 def render_species(id):
+    # SpriteCollab does not currently publish the default Idle sheet for
+    # Beedrill (015) and Dragonair (148). Use labeled PokeAPI static art.
+    if id in (15,148):
+        raw=fetch(f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{id}.png")
+        frame=Image.open(io.BytesIO(raw)).convert("RGBA")
+        side=max(frame.size)
+        square=Image.new("RGBA",(side,side),(0,0,0,0))
+        square.paste(frame,((side-frame.width)//2,(side-frame.height)//2),frame)
+        one=png_bytes(square)
+        k=f"kanto_{id:03d}"
+        result={f"sprites/{k}_{action.lower()}.png":one for action in ACTIONS}
+        result[f"sprites/{k}.png"]=one
+        result[f"credits/{id:03d}.txt"]=(
+            f"Fallback static pixel art: https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/{id}.png\n"
+            "Pokémon artwork belongs to its respective rights holders. Noncommercial fan use only.\n"
+        ).encode()
+        meta={a.lower():{"source":"PokeAPI static fallback","frames":1,"frame_px":side} for a in ACTIONS}
+        return id,result,meta
     pre=f"{BASE}/{id:04d}"
     xml_bytes=fetch(f"{pre}/AnimData.xml")
     xml=ET.fromstring(xml_bytes)
