@@ -1,0 +1,3 @@
+[submodule "fontes/emerald-arena"]
+	path = fontes/emerald-arena
+	url = https://github.com/GBurgardt/pokemon-emerald-arena.git
