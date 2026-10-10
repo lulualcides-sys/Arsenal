@@ -1,0 +1,33 @@
+name: Gerar pacote detalhado de 151 sprites Kanto
+
+on:
+  push:
+    paths:
+      - "ferramentas/gerar_sprites_kanto_151.py"
+      - "jogos-html/Pokemon_Torre_V15_Kanto_JOGAR.html"
+      - ".github/workflows/kanto-151-sprites.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sprites:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Dependência de processamento PNG
+        run: python -m pip install --disable-pip-version-check pillow==11.3.0
+      - name: Download de SpriteCollab e montagem dos 151 Pokémon
+        run: python ferramentas/gerar_sprites_kanto_151.py
+      - name: Salvar ZIP dos sprites como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Pokemon_Torre_V15_Kanto_151_Sprites
+          path: dist/Pokemon_Kanto_151_Sprites_Completo.zip
+          if-no-files-found: error
+          retention-days: 30

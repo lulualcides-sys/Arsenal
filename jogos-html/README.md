@@ -1,5 +1,7 @@
 # Jogos Pokémon em HTML — Histórico e protótipos
 
+**[Pokémon Torre V15 Kanto — JOGAR](Pokemon_Torre_V15_Kanto_JOGAR.html)**: 151 espécies de Kanto, PokéMart (moedas, poções e Pokébolas), Pokédex, sprites menores sem crescer ao atacar, mira travada no adversário e projéteis que não acertam pedras. [Detalhes da V15](V15_KANTO_README.md). A V12 e versões anteriores continuam preservadas.
+
 **[JOGAR AGORA — Torre V12 com sprites detalhados](Pokemon_Torre_V12_Detalhado_JOGAR.html)**: HTML único que incorpora os **50 PNGs detalhados** de dez Pokémon (Idle, Walk, Attack, Hurt, sprite parado); não precisa baixar imagens separadamente. Depois de salvar, abra no Chrome/Firefox/Edge, escolha um inicial e clique **BATALHAR**. [Créditos e instruções V12](V12_DETALHADO_README.md). A V10 e a V11 continuam disponíveis.
 
 **Novo: [Pokémon Torre Arena V11 Animada](Pokemon_Torre_Arena_V11_Animada.html)** — integração de spritesheets PNG locais (Idle/Walk/Attack/Hurt), 8 FPS, espelhamento horizontal e movimentos de fallback. [Como colocar as imagens](SPRITES_V11_GUIA.md). A V10 continua disponível.
