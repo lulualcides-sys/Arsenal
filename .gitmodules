@@ -55,3 +55,42 @@
 [submodule "fontes/ferramentas/coolify"]
 	path = fontes/ferramentas/coolify
 	url = https://github.com/coollabsio/coolify.git
+[submodule "fontes/ferramentas/sprite-tools"]
+	path = fontes/ferramentas/sprite-tools
+	url = https://github.com/trebeljahr/sprite-tools.git
+[submodule "fontes/ferramentas/pixelorama"]
+	path = fontes/ferramentas/pixelorama
+	url = https://github.com/Orama-Interactive/Pixelorama.git
+[submodule "fontes/ferramentas/libresprite"]
+	path = fontes/ferramentas/libresprite
+	url = https://github.com/LibreSprite/LibreSprite.git
+[submodule "fontes/ferramentas/tiled"]
+	path = fontes/ferramentas/tiled
+	url = https://github.com/mapeditor/tiled.git
+[submodule "fontes/ferramentas/kloppy"]
+	path = fontes/ferramentas/kloppy
+	url = https://github.com/PySport/kloppy.git
+[submodule "fontes/ferramentas/open-football-analytics"]
+	path = fontes/ferramentas/open-football-analytics
+	url = https://github.com/leemingo/open-football-analytics.git
+[submodule "fontes/ferramentas/soccer-xg"]
+	path = fontes/ferramentas/soccer-xg
+	url = https://github.com/trae55/soccer.git
+[submodule "fontes/ferramentas/real-esrgan"]
+	path = fontes/ferramentas/real-esrgan
+	url = https://github.com/xinntao/Real-ESRGAN.git
+[submodule "fontes/ferramentas/spec-kit"]
+	path = fontes/ferramentas/spec-kit
+	url = https://github.com/github/spec-kit.git
+[submodule "fontes/ferramentas/playwright-mcp"]
+	path = fontes/ferramentas/playwright-mcp
+	url = https://github.com/microsoft/playwright-mcp.git
+[submodule "fontes/ferramentas/graphiti"]
+	path = fontes/ferramentas/graphiti
+	url = https://github.com/getzep/graphiti.git
+[submodule "fontes/ferramentas/optuna"]
+	path = fontes/ferramentas/optuna
+	url = https://github.com/optuna/optuna.git
+[submodule "fontes/ferramentas/howler-js"]
+	path = fontes/ferramentas/howler-js
+	url = https://github.com/goldfire/howler.js.git

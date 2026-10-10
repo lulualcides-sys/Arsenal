@@ -58,3 +58,10 @@
 A lista detalhada de **43 ferramentas/recursos externos** está em [`ferramentas/INVENTARIO.md`](../ferramentas/INVENTARIO.md). NEXUS continua privado e WildVox continua em repositório próprio.
 
 **Limitações:** HTML V1 só estava disponível em arquivo ZIP; a fonte publicada aqui vai de V2 a V10. Os projetos Pokémon em HTML são protótipos, não cópia compilada do motor GBA. Os testes locais não provam um jogo final no emulador.
+
+## Lote complementar — 10/10/2026
+
+- [Pesquisa de 42 ferramentas](../ferramentas/PESQUISA-GITHUB-2026-10-10.md) — relatório de seleção e comparação de usos.
+- [Inventário geral atualizado: 204 GitHub repos](../ferramentas/INVENTARIO-COMPLETO.md).
+- 13 novos submódulos de código-fonte original em `fontes/ferramentas/`. [Lista exata com commits](../ferramentas/PESQUISA-GITHUB-2026-10-10.md).
+- REA e Emerald Arena preservados sem alterações. Não foram incluídos binários comerciais, ROMs, tokens ou dados pessoais.

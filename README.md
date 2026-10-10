@@ -4,9 +4,11 @@
 
 **[REA — Reverse Engineer Anything](fontes/rea)** ([repositório original](https://github.com/morluto/rea)) é nosso principal kit de estudo de software e engenharia reversa. Seu código completo está ligado ao Arsenal como submódulo Git fixado em commit, ao lado do [Emerald Arena](fontes/emerald-arena).
 
-**[Ver TODAS as ferramentas recuperadas: 162 repositórios](ferramentas/INVENTARIO-COMPLETO.md)** · **[Documentos originais dos prints/listas](ferramentas/arquivos-originais/)** · **[18 bibliotecas com código vinculado](ferramentas/RECUPERADOS-PRINTS-E-LISTAS.md)**
+**[Ver TODAS as ferramentas recuperadas: 204 repositórios](ferramentas/INVENTARIO-COMPLETO.md)** · **[Documentos originais dos prints/listas](ferramentas/arquivos-originais/)** · **[31 bibliotecas com código vinculado](ferramentas/RECUPERADOS-PRINTS-E-LISTAS.md)**
 
 > O Arsenal guarda referências, documentos e repositórios vinculados. Não significa instalação no PC, licenciamento de ativos externos ou compilação de jogos.
+
+**Atualização 10/10/2026:** [42 novas ferramentas pesquisadas](ferramentas/PESQUISA-GITHUB-2026-10-10.md), 13 novos submódulos Git. **Agora 204 repositórios no catálogo e 32 submódulos no total** (Emerald Arena + REA + 30 ferramentas).
 
 Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score** e **WildVox**.
 

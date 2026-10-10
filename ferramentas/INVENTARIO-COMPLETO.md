@@ -1,10 +1,10 @@
 # Inventário COMPLETO recuperado — 10/10/2026
 
-**162 repositórios GitHub únicos** identificados nas nossas listas originais e referências da conversa. O inventário antigo tinha 43 itens (incluindo sites, APIs e serviços). Este documento amplia aquela lista, **sem apagar nada**.
+**204 repositórios GitHub únicos** identificados nas nossas listas originais e referências da conversa. O inventário antigo tinha 43 itens (incluindo sites, APIs e serviços). Este documento amplia aquela lista, **sem apagar nada**.
 
-**PRIORIDADE ABSOLUTA: [REA — Reverse Engineer Anything](../fontes/rea)** — [github.com/morluto/rea](https://github.com/morluto/rea) — com código original vinculado como submódulo Git. Outras 17 ferramentas importantes também estão vinculadas como submódulos; veja a coluna *Situação*. Um submódulo não é instalação, execução, nem cópia física do código em cada clone: use `git clone --recurse-submodules`.
+**PRIORIDADE ABSOLUTA: [REA — Reverse Engineer Anything](../fontes/rea)** — [github.com/morluto/rea](https://github.com/morluto/rea) — com código original vinculado como submódulo Git. Outras 30 ferramentas importantes também estão vinculadas como submódulos; veja a coluna *Situação*. Um submódulo não é instalação, execução, nem cópia física do código em cada clone: use `git clone --recurse-submodules`.
 
-## Lista alfabética de 162 repositórios
+## Lista alfabética original de 162 repositórios
 
 | Nº | Projeto | Situação no Arsenal | Origem da referência |
 |---:|---|---|---|
@@ -188,5 +188,56 @@ Consulte o [catálogo anterior de 43 itens](INVENTARIO.md) para **FootyStats, So
 ## O que foi instalado?
 
 **Nenhuma dessas ferramentas foi automaticamente instalada no NEXUS, WildVox ou Pokémon Torre.** Os projetos vinculados por submódulo estão em commits fixos, preservam créditos e permitem acessar o código com `--recurse-submodules`. Os demais estão apenas catalogados como referências e só devem ser instalados, avaliados ou integrados quando necessário, respeitando licenças e uso autorizado.
+
+## Novas ferramentas pesquisadas e verificadas em 10/10/2026 (42)
+
+Essa seleção passou por checagem individual da existência do repositório GitHub e da disponibilidade da branch. **13 novos códigos** foram vinculados como submódulos; os demais são referências, sem instalação no PC ou execução nos projetos.
+
+| Nº | Projeto | Situação no Arsenal | Área | O que acrescenta |
+|---:|---|---|---|---|
+| 163 | [godotengine/godot](https://github.com/godotengine/godot) | Referência catalogada | Pokémon | Motor 2D/3D, animações, física e exportação; projeto grande |
+| 164 | [mapeditor/tiled](https://github.com/mapeditor/tiled) | [Código vinculado](../fontes/ferramentas/tiled) | Pokémon | Editor de mapas, tiles e colisões de arenas |
+| 165 | [Orama-Interactive/Pixelorama](https://github.com/Orama-Interactive/Pixelorama) | [Código vinculado](../fontes/ferramentas/pixelorama) | Pokémon | Editor de pixel art, spritesheets e animações |
+| 166 | [LibreSprite/LibreSprite](https://github.com/LibreSprite/LibreSprite) | [Código vinculado](../fontes/ferramentas/libresprite) | Pokémon | Editor de sprites animados; verificar licença do projeto |
+| 167 | [trebeljahr/sprite-tools](https://github.com/trebeljahr/sprite-tools) | [Código vinculado](../fontes/ferramentas/sprite-tools) | Pokémon | Ferramentas CLI/MCP para sprites, atlas e colisões; revisar maturidade |
+| 168 | [pixijs/pixijs](https://github.com/pixijs/pixijs) | Referência catalogada | Pokémon | Renderização acelerada de sprites 2D em navegador |
+| 169 | [goldfire/howler.js](https://github.com/goldfire/howler.js) | [Código vinculado](../fontes/ferramentas/howler-js) | Pokémon | Biblioteca de áudio e efeitos de batalha |
+| 170 | [bevyengine/bevy](https://github.com/bevyengine/bevy) | Referência catalogada | Pokémon | Motor de jogos Rust/ECS, referência alternativa |
+| 171 | [skillcorner/opendata](https://github.com/skillcorner/opendata) | Referência catalogada | NEXUS | Amostra pública de tracking; verificar atribuição e escopo |
+| 172 | [PySport/kloppy](https://github.com/PySport/kloppy) | [Código vinculado](../fontes/ferramentas/kloppy) | NEXUS | Normalização de eventos/tracking de futebol |
+| 173 | [trae55/soccer](https://github.com/trae55/soccer) | [Código vinculado](../fontes/ferramentas/soccer-xg) | NEXUS | Experimentos de modelagem xG com dados SPADL |
+| 174 | [leemingo/open-football-analytics](https://github.com/leemingo/open-football-analytics) | [Código vinculado](../fontes/ferramentas/open-football-analytics) | NEXUS | Exemplos xG/xPass/xT/VAEP e métricas físicas com amostras públicas |
+| 175 | [AtaSakik/PressIQ](https://github.com/AtaSakik/PressIQ) | Referência catalogada | NEXUS | Protótipo tático com modelos xG/xT; novo e requer avaliação |
+| 176 | [scikit-learn/scikit-learn](https://github.com/scikit-learn/scikit-learn) | Referência catalogada | NEXUS | Classificadores, validação e calibração probabilística |
+| 177 | [optuna/optuna](https://github.com/optuna/optuna) | [Código vinculado](../fontes/ferramentas/optuna) | NEXUS | Otimização de hiperparâmetros; exige validação temporal |
+| 178 | [microsoft/LightGBM](https://github.com/microsoft/LightGBM) | Referência catalogada | NEXUS | Gradient boosting para previsão baseada em features |
+| 179 | [dmlc/xgboost](https://github.com/dmlc/xgboost) | Referência catalogada | NEXUS | Gradient boosting e experimentos de modelos |
+| 180 | [catboost/catboost](https://github.com/catboost/catboost) | Referência catalogada | NEXUS | Modelos supervisionados com variáveis categóricas; projeto grande |
+| 181 | [evidentlyai/evidently](https://github.com/evidentlyai/evidently) | Referência catalogada | NEXUS | Monitoramento de qualidade, drift e desempenho do modelo |
+| 182 | [Nixtla/mlforecast](https://github.com/Nixtla/mlforecast) | Referência catalogada | NEXUS | Machine learning em séries temporais |
+| 183 | [Nixtla/statsforecast](https://github.com/Nixtla/statsforecast) | Referência catalogada | NEXUS | Modelos estatísticos de previsão temporal |
+| 184 | [unit8co/darts](https://github.com/unit8co/darts) | Referência catalogada | NEXUS | Séries temporais, backtest e forecast |
+| 185 | [statsmodels/statsmodels](https://github.com/statsmodels/statsmodels) | Referência catalogada | NEXUS | Estatística, modelos e testes de hipóteses |
+| 186 | [facebookresearch/sam2](https://github.com/facebookresearch/sam2) | Referência catalogada | WildVox | Segmentação de objetos em imagem e vídeo; GPU pode ser necessária |
+| 187 | [xinntao/Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN) | [Código vinculado](../fontes/ferramentas/real-esrgan) | WildVox | Upscaling de imagens/vídeos e redução de artefatos; custos de GPU |
+| 188 | [blender/blender](https://github.com/blender/blender) | Referência catalogada | WildVox | Modelagem/animação 3D e render programável; projeto grande |
+| 189 | [Zulko/moviepy](https://github.com/Zulko/moviepy) | Referência catalogada | WildVox | Composição de vídeo programática em Python |
+| 190 | [OpenShot/openshot-qt](https://github.com/OpenShot/openshot-qt) | Referência catalogada | WildVox | Editor open source para estudar interface e fluxo de edição |
+| 191 | [github/spec-kit](https://github.com/github/spec-kit) | [Código vinculado](../fontes/ferramentas/spec-kit) | Dev/IA | Desenvolvimento orientado a especificações e tarefas verificáveis |
+| 192 | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) | Referência catalogada | Dev/IA | Avaliação/regressão de prompts e agentes; revisar condições de execução |
+| 193 | [browserbase/stagehand](https://github.com/browserbase/stagehand) | Referência catalogada | Dev/IA | Automação de navegador com orientação por IA |
+| 194 | [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) | Referência catalogada | Dev/IA | Implementações de servidores MCP para ferramentas |
+| 195 | [getzep/graphiti](https://github.com/getzep/graphiti) | [Código vinculado](../fontes/ferramentas/graphiti) | Dev/IA | Grafo temporal de conhecimento para memória de agentes |
+| 196 | [openai/codex](https://github.com/openai/codex) | Referência catalogada | Dev/IA | Ferramenta de programação assistida por agentes |
+| 197 | [anthropics/claude-code](https://github.com/anthropics/claude-code) | Referência catalogada | Dev/IA | Ferramenta CLI de desenvolvimento assistido |
+| 198 | [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) | Referência catalogada | Dev/IA | CLI de desenvolvimento assistido |
+| 199 | [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp) | [Código vinculado](../fontes/ferramentas/playwright-mcp) | Dev/IA | Integração MCP para automação e inspeção de navegador |
+| 200 | [e2b-dev/E2B](https://github.com/e2b-dev/E2B) | Referência catalogada | Dev/IA | Ambientes isolados para execução de código; pode ter custos |
+| 201 | [mermaid-js/mermaid](https://github.com/mermaid-js/mermaid) | Referência catalogada | Dev/IA | Diagramas de arquitetura e fluxo gerados por texto |
+| 202 | [excalidraw/excalidraw](https://github.com/excalidraw/excalidraw) | Referência catalogada | Dev/IA | Diagramas visuais de interface e arquitetura |
+| 203 | [great-expectations/great_expectations](https://github.com/great-expectations/great_expectations) | Referência catalogada | Dev/IA | Validação automatizada de qualidade dos dados |
+| 204 | [dbt-labs/dbt-core](https://github.com/dbt-labs/dbt-core) | Referência catalogada | Dev/IA | Transformações SQL versionadas e testes |
+
+[Relatório da pesquisa](PESQUISA-GITHUB-2026-10-10.md) · [Motores e bibliotecas vinculados](../fontes/README.md)
 
 A lista original inclui também ideias de produtos, serviços sem código e programas mencionados em prints; registrar referência não é garantir viabilidade técnica ou uso ilimitado.

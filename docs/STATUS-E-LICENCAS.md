@@ -13,3 +13,7 @@ Nenhum uso desse repositório deve violar acesso a APIs, paywall, DRM ou licenç
 ## Adição REA + 17 ferramentas (10/10/2026)
 
 O Arsenal inclui 18 novos **submódulos Git** em commits fixos: REA, oito projetos StoryTold, Superpowers, Postiz, Hindsight, Sim, OpenCode, SoccerData, SoccerAction, AnyPS5 e Coolify. Os 162 repositórios do catálogo completo não estão todos como submódulos; a maioria é **referência**. Cada repositório mantém suas próprias obrigações de licença, ativos e requisitos técnicos. **Nenhum foi instalado no NEXUS ou WildVox por esta operação.**
+
+## Nova varredura (10/10/2026)
+
+Adicionados 42 novos repositórios ao [inventário geral](../ferramentas/INVENTARIO-COMPLETO.md), dos quais 13 com código-fonte **referenciado via submódulo**. Total de submódulos = 32, incluindo Emerald Arena. Projetos de terceiros retêm suas licenças. Não houve instalação nos projetos nem validação de performance/segurança dos novos módulos. Fontes de futebol não dão acesso garantido a dados ao vivo e não comprovam lucratividade.

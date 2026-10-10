@@ -19,3 +19,7 @@ O submódulo preserva a origem e a autoria. **Nenhuma ROM comercial foi incluíd
 ## Principal ferramenta REA
 
 [REA — Reverse Engineer Anything](rea) (`morluto/rea`) está vinculado como submódulo, assim como outras 17 ferramentas de engenharia, IA e mídia em [fontes/ferramentas/](ferramentas/). Leia o [inventário completo](../ferramentas/INVENTARIO-COMPLETO.md). Só consultar/baixar código não significa instalá-lo.
+
+## Novos componentes vinculados — 10/10/2026
+
+13 novos submódulos de ferramentas para sprites, vídeo, futebol/ML e QA: [relação com commits](../ferramentas/PESQUISA-GITHUB-2026-10-10.md). **Total: 32 submódulos** incluindo Emerald Arena. Todos requerem `git clone --recurse-submodules`; sem compilação ou instalação automática.
