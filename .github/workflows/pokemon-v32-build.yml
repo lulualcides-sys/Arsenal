@@ -1,0 +1,54 @@
+name: Pokemon Torre V32 - Build e validacao 2D
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jogos-html/pokemon-torre-v32/patch.js"
+      - "jogos-html/pokemon-torre-v31/index.html"
+      - ".github/workflows/pokemon-v32-build.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Montar pacote V32 e validar JavaScript
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          base=Path('jogos-html/pokemon-torre-v31/index.html').read_text(encoding='utf-8')
+          patch=Path('jogos-html/pokemon-torre-v32/patch.js').read_text(encoding='utf-8')
+          marker='render();\n})();'
+          assert base.count(marker)==1, 'Fim do script inesperado'
+          assert patch.count('FIM POKEMON TORRE V32')==1
+          required=['v32MoveScreen','v32Catalogue','V32_TM','v32StartTower','v32StartLeague','V32_WEATHERS','v32Nature','v32SoundMenu','PokemonTorreV32Diagnostics']
+          assert all(x in patch for x in required), 'Função V32 ausente'
+          before='const chance=Math.max(.05,Math.min(.98,(.17+.72*(1-m.hp/m.maxHp))*mult*rarity));'
+          assert base.count(before)==1,'Chance de captura mudou; rever patch'
+          after="""const wildConditions=engine?.v25?.stats?.enemy?.conditions||[];
+          const captureStatusBonus=(m.status==='sleep'||m.status==='freeze'||wildConditions.some(c=>/sleep|freeze|sono|gelo/i.test(c)))?1.32:(m.status==='paralyze'||m.status==='poison'||m.status==='burn'||wildConditions.length>0)?1.17:1;
+          const chance=Math.max(.05,Math.min(.98,(.17+.72*(1-m.hp/m.maxHp))*mult*rarity*captureStatusBonus));"""
+          base=base.replace(before,after,1)
+          output=base.replace(marker,patch+'\n'+marker,1).replace('<title>Pokémon Torre V31 — Kanto 2D</title>','<title>Pokémon Torre V32 — Kanto 2D</title>',1)
+          Path('jogos-html/pokemon-torre-v32/index.html').write_text(output,encoding='utf-8')
+          Path('/tmp/pokemon-v32.js').write_text(output.split('<script>',1)[1].split('</script>',1)[0],encoding='utf-8')
+          assert '<!doctype html>' in output and 'v32MoveScreen' in output
+          assert 'captureStatusBonus' in output
+          print('V32 HTML final chars:',len(output),'patch:',len(patch))
+          PY
+          node --check /tmp/pokemon-v32.js
+      - name: Commit da versao V32 isolada
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jogos-html/pokemon-torre-v32/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "build(pokemon): V32 standalone com troca de golpes"
+            git push
+          fi
