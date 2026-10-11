@@ -3807,6 +3807,18 @@ render=function(){prevRender();if(!save.starter||battle?.active)return;
 function historyMenu(){const s=state().stats;const rows=state().records;
  overlay('<div class="sectionhead"><h2>📊 Histórico V34</h2><button class="btn tiny ghost" id="v34StatClose">✕</button></div><div class="v34Grid">'+[['Batalhas',s.battles],['Vitórias',s.wins],['Derrotas',s.losses],['Maior sequência',s.bestStreak],['Combos',s.combo],['Bônus em moedas',s.rewards],['Recorde Torre',save.v32?.tower?.best||0],['Shiny registrados',(save.shinyCaught||[]).length]].map(x=>'<div class="v34Datum">'+x[0]+': <strong>'+x[1]+'</strong></div>').join('')+'</div><div class="v34Panel"><h3>Últimos confrontos</h3>'+ (rows.slice(0,15).map(x=>'<p class="v34TrainerTag">'+new Date(x.at).toLocaleDateString('pt-BR')+' · '+(x.win?'✅ Vitória':'❌ Derrota')+' · '+safe(x.mode)+' · '+x.combo+' combos</p>').join('')||'<p>Ainda não há batalhas registradas na V34.</p>')+'</div><button class="btn ghost wide" id="v34StatBack">Voltar</button>');$('v34StatClose').onclick=close;$('v34StatBack').onclick=close;
 }
+// Correção V34.1: o editor deve mostrar os QUATRO golpes realmente ativos,
+// e não as chaves antigas anteriores aos golpes exclusivos da V33.
+const v34DefaultSlotsPrev=v32DefaultSlots;
+v32DefaultSlots=function(m){
+ const fallback=v34DefaultSlotsPrev(m);
+ if(!m||Array.isArray(m.v32Slots))return fallback; // Nunca altera personalizações salvas.
+ const equipped=skillSet(m),catalog=v32Catalogue(m);
+ return equipped.map((move,i)=>{
+  const found=catalog.find(x=>x.available && x.move.name===move.name && x.move.type===move.type && x.move.kind===move.kind);
+  return found?.key||fallback[i];
+ });
+};
 window.PokemonTorreV34Diagnostics=()=>({version:V34,species:151,moveCatalog:save.team.map(m=>({id:m.id,total:v32Catalogue(m).length,learned:v32Catalogue(m).filter(x=>x.available).length})),duoAuto:!!battle?.v31Duo&&!battle.v31Duo.v33Manual,combo:battle?.v34?.combo||0,stats:{...state().stats},trainer:battle?.label||null,quality:state().settings.quality});
 })();
 /* END POKEMON TORRE V34 */
