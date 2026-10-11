@@ -55,7 +55,7 @@ window.__test345={
 };
 """
 assert s.count("/* END V33.1 */")==1
-s=s.replace("/* END V33.1 */","/* END V33.1 */\nwindow.__345Catalogue=v32Catalogue;window.__345Defaults=v32DefaultSlots;",1)
+s=s.replace("/* END V33.1 */","/* END V33.1 */\nwindow.__345Catalogue=(m)=>v32Catalogue(m);window.__345Defaults=(m)=>v32DefaultSlots(m);",1)
 s=s.replace(marker,"\n"+api+marker)
 with sync_playwright() as p:
  b=p.chromium.launch(headless=True,args=["--no-sandbox","--disable-gpu"])
