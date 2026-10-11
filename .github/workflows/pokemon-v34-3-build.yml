@@ -1,0 +1,56 @@
+name: Pokemon Torre V34.3 - Build VFX
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'jogos-html/pokemon-torre-v34-3/patch.js'
+      - '.github/workflows/pokemon-v34-3-build.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Gerar V34.3 e validar script
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          base=Path('jogos-html/pokemon-torre-v34-2/index.html').read_text(encoding='utf-8')
+          patch=Path('jogos-html/pokemon-torre-v34-3/patch.js').read_text(encoding='utf-8')
+          marker='/* FIM POKEMON TORRE V34.2 */'
+          assert base.count(marker)==1, 'Fim da base V34.2 alterado'
+          assert patch.count('PokemonTorreV343Diagnostics')==1
+          assert patch.count('PokemonTorreV343SignatureDiagnostics')==1
+          assert 'FIM V34.3 GOLPES INDIVIDUAIS' in patch
+          result=base.replace(marker,marker+'\n'+patch,1)
+          source='if(s&&b===battle&&b?.active&&(cooldowns||[])[i]>now'
+          assert result.count(source)==1, 'Render genérico V34.3 alterado'
+          result=result.replace(source,'if(s&&!this.v343SuppressGeneric&&b===battle&&b?.active&&(cooldowns||[])[i]>now',1)
+          source='if(battle?.active&&type){this.v343Fx'
+          assert result.count(source)==1
+          result=result.replace(source,'if(battle?.active&&type&&!this.v343SuppressGeneric){this.v343Fx',1)
+          source='const ret=baseUse.call(this,i);\n if(!kind||'
+          assert result.count(source)==1, 'Interceptador de golpes alterado'
+          result=result.replace(source,"this.v343SuppressGeneric=kind;let ret;try{ret=baseUse.call(this,i);}finally{this.v343SuppressGeneric=null;}\n if(!kind||",1)
+          source="if(p.type!=='electric'){c.arc(p.x,p.y,4.2,0,7);c.fill();}"
+          assert result.count(source)==1, 'Renderer de teleguiados alterado'
+          result=result.replace(source,"if(p.type!=='electric'&&!p.v343Signature){c.arc(p.x,p.y,4.2,0,7);c.fill();}",1)
+          result=result.replace('Pokémon Torre V34.2','Pokémon Torre V34.3',1)
+          assert result.count('render();\n})();')==1
+          Path('jogos-html/pokemon-torre-v34-3/index.html').write_text(result,encoding='utf-8')
+          Path('/tmp/v34-3.js').write_text(result.split('<script>',1)[1].split('</script>',1)[0],encoding='utf-8')
+          print('V34.3 HTML bytes:',len(result.encode('utf-8')))
+          PY
+          node --check /tmp/v34-3.js
+      - name: Salvar HTML isolado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jogos-html/pokemon-torre-v34-3/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "build(pokemon): V34.3 HTML standalone efeitos por golpe"
+            git push
+          fi
