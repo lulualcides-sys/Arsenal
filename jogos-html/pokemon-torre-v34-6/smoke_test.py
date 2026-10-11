@@ -57,6 +57,7 @@ with sync_playwright() as p:
  page=b.new_page(viewport={"width":390,"height":844},is_mobile=True,has_touch=True,device_scale_factor=1)
  errors=[];page.on("pageerror",lambda e:errors.append(str(e)))
  page.set_content(s,wait_until="domcontentloaded",timeout=45000)
+ print("BOOT-ERRORS",errors,"AVAILABLE",page.evaluate("({diag:typeof PokemonTorreV346Diagnostics,bridge:typeof window.__346Test,overlay:typeof overlay})"),flush=True)
  diag=page.evaluate("window.__346Test.seed()")
  assert diag['version']=='34.6' and all(x in diag['environments'] for x in ['fog','volcano','sun']),diag
  ui=page.evaluate("window.__346Test.editor()")
