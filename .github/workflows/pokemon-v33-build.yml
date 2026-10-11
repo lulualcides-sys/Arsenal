@@ -31,7 +31,7 @@ jobs:
           assert patch.rstrip().endswith("/* FIM POKEMON TORRE V33 */")
           m=re.search(r'const V33_SPECIES_MOVES=\{(.*?)\};',patch,re.S)
           assert m, "Mapa de golpes nao encontrado"
-          ids=list(map(int,re.findall(r'(?m)^\s*(\d+):\[',m.group(1))))
+          ids=list(map(int,re.findall(r'(?<![A-Za-z0-9_])(\d+):\[',m.group(1))))
           assert len(ids)==151 and set(ids)==set(range(1,152)), "151 especies nao cobertas"
           checks=["v33TrainingMenu","v33LabMenu","v33LegendMenu","v33HistoryMenu","v33BattleTools","V33_LEADERS","PokemonTorreV33Diagnostics","V33_FX_COLORS","v33SkillPrev"]
           assert all(k in patch for k in checks), "V33 incompleta"
