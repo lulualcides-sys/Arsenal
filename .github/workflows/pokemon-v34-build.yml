@@ -1,0 +1,47 @@
+name: Pokemon Torre V34 - Build 2D
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jogos-html/pokemon-torre-v34/patch.js"
+      - "jogos-html/pokemon-torre-v33-1/index.html"
+      - ".github/workflows/pokemon-v34-build.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Montar V34 e validar sintaxe e recursos
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          source=Path('jogos-html/pokemon-torre-v33-1/index.html').read_text(encoding='utf-8')
+          patch=Path('jogos-html/pokemon-torre-v34/patch.js').read_text(encoding='utf-8')
+          marker='/* END V33.1 */'
+          assert source.count(marker)==1, 'Escopo do motor de golpes mudou'
+          required=['PokemonTorreV34Diagnostics','setAutoDuo','v32Catalogue=function','v34CaptureUpdate','v34CaptureDraw','KANTO_TRAINER_CLASSES','historyMenu','v34Callout','combo']
+          assert all(x in patch for x in required), 'Modulo V34 incompleto'
+          output=source.replace(marker,marker+'\n'+patch,1)
+          output=output.replace('Pokémon Torre V33.1','Pokémon Torre V34',1)
+          assert output.count('/* END POKEMON TORRE V34 */')==1
+          Path('jogos-html/pokemon-torre-v34/index.html').write_text(output,encoding='utf-8')
+          Path('/tmp/v34_main.js').write_text(output.split('<script>',1)[1].split('</script>',1)[0],encoding='utf-8')
+          print('HTML V34 concluido:',len(output),'chars')
+          PY
+          node --check /tmp/v34_main.js
+      - name: Commit versao completa
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jogos-html/pokemon-torre-v34/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "build(pokemon): HTML V34 standalone"
+            git push
+          fi
