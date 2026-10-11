@@ -1,4 +1,5 @@
 """Browser smoke tests for Pokémon Torre V34, including save/moves/double battle."""
+# Regressão V34.1: movimentos mostrados no editor devem coincidir com os realmente equipados.
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 import json
