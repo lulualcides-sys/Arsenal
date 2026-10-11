@@ -1,0 +1,26 @@
+name: Pokemon Torre V34.3 - Smoke Android
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'jogos-html/pokemon-torre-v34-3/smoke_test.py'
+      - 'jogos-html/pokemon-torre-v34-3/index.html'
+      - '.github/workflows/pokemon-v34-3-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Preparar navegador Chromium
+        run: |
+          pip install playwright
+          playwright install --with-deps chromium
+      - name: Testar 18 tipos e 11 golpes no Android simulado
+        run: python jogos-html/pokemon-torre-v34-3/smoke_test.py
