@@ -1,0 +1,55 @@
+name: Pokemon Torre V34.5 - Kanto Recovery e Tamanhos
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jogos-html/pokemon-torre-v34-5/patch.js"
+      - "jogos-html/pokemon-torre-v34-5/smoke_test.py"
+      - ".github/workflows/pokemon-v34-5-build.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Montar V34.5 e validar JS
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          origin=Path("jogos-html/pokemon-torre-v34-4/index.html").read_text(encoding="utf-8")
+          patch=Path("jogos-html/pokemon-torre-v34-5/patch.js").read_text(encoding="utf-8")
+          marker="/* FIM POKEMON TORRE V34.4 */"
+          assert origin.count(marker)==1
+          assert patch.count("/* FIM POKEMON TORRE V34.5 */")==1
+          assert "PokemonTorreV345Diagnostics" in patch
+          out=origin.replace(marker,marker+"\n"+patch,1)
+          Path("jogos-html/pokemon-torre-v34-5/index.html").write_text(out,encoding="utf-8")
+          Path("/tmp/pokemon-v345.js").write_text(out.split("<script>",1)[1].split("</script>",1)[0],encoding="utf-8")
+          print("V34.5",len(out.encode("utf-8")),"bytes")
+          PY
+          node --check /tmp/pokemon-v345.js
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar Chromium
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Smoke Recover, Calm Mind, Kanto e mobile
+        run: python jogos-html/pokemon-torre-v34-5/smoke_test.py
+      - name: Publicar HTML completo
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jogos-html/pokemon-torre-v34-5/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "build(pokemon): HTML V34.5"
+            git push
+          fi
