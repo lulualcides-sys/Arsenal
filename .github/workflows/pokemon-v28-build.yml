@@ -1,0 +1,50 @@
+name: Build Pokemon Torre V28 - Single HTML
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jogos-html/pokemon-torre-v28/upgrade.js.txt"
+      - "jogos-html/pokemon-torre-v27/index.html"
+      - ".github/workflows/pokemon-v28-build.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Assemble and validate V28
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          source=Path('jogos-html/pokemon-torre-v27/index.html').read_text()
+          upgrade=Path('jogos-html/pokemon-torre-v28/upgrade.js.txt').read_text()
+          marker='render();\n})();'
+          assert source.count(marker)==1, 'Unexpected end of game script'
+          assert upgrade.count('V28_PATCH_END')==1
+          output=source.replace(marker,upgrade+'\n'+marker)
+          output=output.replace('<title>Pokémon Torre V27 — Kanto 2D</title>', '<title>Pokémon Torre V28 — Kanto 2D</title>')
+          Path('jogos-html/pokemon-torre-v28/index.html').write_text(output)
+          assert 'V28_PATCH_VERSION' in output and '<!doctype html>' in output
+          print('V28 assembled',len(output),'characters')
+          PY
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('jogos-html/pokemon-torre-v28/index.html').read_text()
+          Path('/tmp/v28.js').write_text(s.split('<script>',1)[1].split('</script>',1)[0])
+          PY
+          node --check /tmp/v28.js
+      - name: Commit generated standalone V28
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jogos-html/pokemon-torre-v28/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "build(pokemon): standalone V28 with C++ WASM"
+            git push
+          fi
