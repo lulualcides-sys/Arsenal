@@ -1,0 +1,67 @@
+name: Pokemon Torre V34.2 - Kanto Status e Raio
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jogos-html/pokemon-torre-v34-2/patch.js"
+      - "jogos-html/pokemon-torre-v34-2/smoke_test.py"
+      - ".github/workflows/pokemon-v34-2-build.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build-and-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Montar V34.2 a partir da V34 verificada
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          base=Path('jogos-html/pokemon-torre-v34/index.html').read_text(encoding='utf-8')
+          patch=Path('jogos-html/pokemon-torre-v34-2/patch.js').read_text(encoding='utf-8')
+          marker='/* FIM POKÉMON TORRE V34 */'
+          assert base.count(marker)==1,'Base V34 inesperada'
+          assert patch.count('/* FIM POKEMON TORRE V34.2 */')==1
+          assert all(x in patch for x in ('v342LaunchPrevious','PokemonTorreV342Diagnostics','v342Bolt','STATUS_DEFS'))
+          # Versões anteriores usavam sideState inexistente ao iniciar alguns chefes com Intimidate.
+          old="const st=sideState('ally');st.atk=Math.max(-3,(st.atk||0)-1);"
+          new="const st=engine?.v25?.stats?.player;if(st)st.atk=Math.max(.60,(st.atk||1)-.12);"
+          assert base.count(old)==1,'Ponto de correção de Intimidate não encontrado'
+          base=base.replace(old,new,1)
+          # Remove a bolinha que a versão 30 desenhava nos projéteis teleguiados elétricos.
+          old="c.arc(p.x,p.y,4.2,0,7);c.fill();"
+          new="if(p.type!=='electric'){c.arc(p.x,p.y,4.2,0,7);c.fill();}"
+          assert base.count(old)==1,'Ponto de remoção dos círculos elétricos alterado'
+          base=base.replace(old,new,1)
+          output=base.replace(marker,marker+'\n'+patch,1)
+          output=output.replace('Pokémon Torre V34','Pokémon Torre V34.2',1)
+          dest=Path('jogos-html/pokemon-torre-v34-2/index.html')
+          dest.write_text(output,encoding='utf-8')
+          Path('/tmp/pokemon-v34-2.js').write_text(output.split('<script>',1)[1].split('</script>',1)[0],encoding='utf-8')
+          print('V34.2 bytes:',dest.stat().st_size)
+          PY
+          node --check /tmp/pokemon-v34-2.js
+      - name: Instalar e executar testes no navegador Android simulado
+        shell: bash
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+          python jogos-html/pokemon-torre-v34-2/smoke_test.py
+      - name: Publicar V34.2 separadamente da V34
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jogos-html/pokemon-torre-v34-2/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "build(pokemon): V34.2 Kanto canonical and Canvas lightning"
+            git push
+          fi
