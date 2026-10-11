@@ -37,7 +37,7 @@ jobs:
           base=base.replace("<title>Pokémon Torre V28 — Kanto 2D</title>","<title>Pokémon Torre V28.1 — Kanto 2D</title>",1)
           output=Path("jogos-html/pokemon-torre-v28-1/index.html")
           output.write_text(base,encoding="utf-8")
-          assert all(x in base for x in ("v281SettingsButton","v281Restart","v27Odds .spritewrap:has","V28_BATTLE_WASM_B64"))
+          assert all(x in base for x in ("v281SettingsButton","v281Restart","v27Odds .spritewrap:has","V28_PATCH_VERSION"))
           Path("/tmp/pokemon-v28-1.js").write_text(base.split("<script>",1)[1].split("</script>",1)[0],encoding="utf-8")
           print("V28.1 validada:",len(base),"caracteres")
           PY
