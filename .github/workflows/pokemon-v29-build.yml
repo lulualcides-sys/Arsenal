@@ -1,0 +1,78 @@
+name: Pokemon Torre V29 - Build unico patch 2D
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jogos-html/pokemon-torre-v29/patch.js"
+      - "jogos-html/pokemon-torre-v28-1/index.html"
+      - ".github/workflows/pokemon-v29-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pokemon-torre-v29-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Montar campanha V29 completa, com 6 a 13 treinadores
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          source=Path("jogos-html/pokemon-torre-v28-1/index.html")
+          patch=Path("jogos-html/pokemon-torre-v29/patch.js").read_text(encoding="utf-8")
+          s=source.read_text(encoding="utf-8")
+          changes=[
+           ("let step=save.stage,remaining=6-step;","let step=save.stage,remaining=v29TrainerCount(save.gym)-step;"),
+           ("const grassAllowed=step>=1&&step<=6;","const grassAllowed=step>=1&&step<=v29TrainerCount(save.gym);"),
+           ("let stages=Array.from({length:7},","let stages=Array.from({length:v29TrainerCount(save.gym)+1},"),
+           ("i===6?g.medal","i===v29TrainerCount(save.gym)?g.medal"),
+           ("i===6?'LÍDER'","i===v29TrainerCount(save.gym)?'LÍDER'"),
+           ("Treinador ${step+1} de 6","Treinador ${step+1} de ${v29TrainerCount(save.gym)}"),
+           ("100*step/7","100*step/(v29TrainerCount(save.gym)+1)"),
+           ("save.stage===7","save.stage===v29TrainerCount(save.gym)+1"),
+           ("save.stage>=7","save.stage>v29TrainerCount(save.gym)"),
+           ("save.stage>6","save.stage>v29TrainerCount(save.gym)"),
+           ("save.stage<=6","save.stage<=v29TrainerCount(save.gym)"),
+           ("step===6","step===v29TrainerCount(save.gym)"),
+           ("save.stage===6","save.stage===v29TrainerCount(save.gym)"),
+           ("oldStage===6","oldStage===v29TrainerCount(oldGym)"),
+           ("seis confrontos por ginásio","desafios progressivos de 6 a 13 treinadores por ginásio")
+          ]
+          for old,new in changes:
+            n=s.count(old)
+            assert n>0, ("A regra do jogo mudou, abortando montagem:",old)
+            s=s.replace(old,new)
+          assert "function v29TrainerCount(g)" in patch
+          assert "V29_SIGNATURES" in patch and "v29OldFinishBattle" in patch
+          marker="render();\n})();"
+          assert s.count(marker)==1, "Fim de codigo nao identificado"
+          s=s.replace(marker,patch+"\n"+marker,1)
+          s=s.replace("<title>Pokémon Torre V28.1","<title>Pokémon Torre V29",1)
+          output=Path("jogos-html/pokemon-torre-v29/index.html")
+          output.write_text(s,encoding="utf-8")
+          script=s.split("<script>",1)[1].split("</script>",1)[0]
+          Path("/tmp/pokemon-v29.js").write_text(script,encoding="utf-8")
+          assert "v29TrainerCount" in script and "v281SettingsButton" in script
+          assert "V28_BATTLE_WASM" in script or "V28_PATCH_VERSION" in script or "v28Wasm" in script
+          print("V29 montada:",len(s),"caracteres")
+          PY
+          node --check /tmp/pokemon-v29.js
+      - name: Publicar HTML unico
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jogos-html/pokemon-torre-v29/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "build(pokemon): V29 unificada - 84 lutas ginasios"
+            git push
+          fi
