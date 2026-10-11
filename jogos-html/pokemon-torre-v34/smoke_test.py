@@ -31,9 +31,14 @@ window.__v34Test={
   const count=document.querySelectorAll("[data-v331-slot]").length;
   const names=skillSet(save.team[0]).map(m=>m.name);
   const opts=[...document.querySelectorAll('[data-v331-pick]:not(:disabled)')];
-  const choose=opts.find(el=>!names.includes(el.querySelector("b")?.textContent?.replace(/^[^ ]+ /,"")||""));
+  const catalogue=v32Catalogue(save.team[0]);
+  const choose=opts.find(el=>{
+   const entry=catalogue[Number(el.dataset.v331Pick)];
+   return entry?.available && !names.includes(entry.move.name);
+  });
   if(choose)choose.click();
-  return {count,options:opts.length,before:names,after:skillSet(save.team[0]).map(m=>m.name)};
+  const after=skillSet(save.team[0]).map(m=>m.name);
+  return {count,options:opts.length,chosen:choose?catalogue[Number(choose.dataset.v331Pick)]?.move.name:null,before:names,after,saved:save.team[0].v32Slots?.length===4};
  },
  duo(){
   close();startBattle([mon(41,50),mon(52,50),mon(61,50)],"🚀 ROCKET DE KANTO",false);
@@ -70,7 +75,7 @@ with sync_playwright() as pw:
     team=page.evaluate("window.__v34Test.team()")
     assert team["moves"] and team["profile"] and team["count"]==3,team
     moves=page.evaluate("window.__v34Test.moves()")
-    assert moves["count"]==4 and moves["options"]>=4,moves
+    assert moves["count"]==4 and moves["options"]>=4 and moves["chosen"] and moves["saved"] and moves["before"]!=moves["after"],moves
     # Team and trainer switch: the V34 game must not use gym leaders for regular fights.
     duo=page.evaluate("window.__v34Test.duo()")
     assert duo["active"] and duo["auto"] and not duo["controls"],duo
