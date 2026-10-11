@@ -28,6 +28,15 @@ window.__347Test={
   const after=Boolean(e?.custom&&e.customStatic);
   return {ready:before,keptCustom:after,active:!!battle?.active};
  },
+ cast(){
+  const m=save.team[0],catalogue=v32Catalogue(m),fire=catalogue.find(x=>x.available&&x.move.type==='fire'&&x.move.power>0);
+  if(!fire)return {error:'Golpe de fogo indisponível'};
+  m.v32Slots=[fire.key,...v32DefaultSlots(m).slice(1)];
+  engine.v25.entry=[];battle.paused=false;battle.energy=100;cooldowns=[0,0,0,0];
+  engine.useMove(0);engine.v25.stats.enemy.conditions=['poison'];engine.draw(performance.now());
+  return {name:skillSet(m)[0].name,active:engine.v347Sprites?.length||0,
+   effects:PokemonTorreV347MoveDiagnostics()};
+ },
  oldVersion(){return typeof PokemonTorreV346Diagnostics==='function';}
 };
 """
@@ -47,6 +56,9 @@ with sync_playwright() as p:
  assert art["sources"] and all("generation-iii" in item["url"] and item["source"] for item in art["sources"][:3]),art
  state=page.evaluate("window.__347Test.battle()")
  assert state["active"] and state["ready"] and state["keptCustom"],state
+ spell=page.evaluate("window.__347Test.cast()")
+ assert spell.get("active",0)>0 and spell["effects"]["moveTypes"]>=17,spell
+ page.wait_for_function("window.PokemonTorreV347MoveDiagnostics().loaded>=8",timeout=15000)
  assert not errors,errors
- print(json.dumps({"species":151,"byGame":info['preferences'],"sources":art["sources"][:3],"render":state,"errors":errors},ensure_ascii=False))
+ print(json.dumps({"species":151,"byGame":info['preferences'],"sources":art["sources"][:3],"render":state,"attack":spell,"errors":errors},ensure_ascii=False))
  browser.close()
