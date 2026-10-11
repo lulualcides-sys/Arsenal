@@ -8,6 +8,19 @@ const KEY=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLow
 const clamp=(a,min,max)=>Math.max(min,Math.min(max,a));
 const nfmt=n=>Number(n).toFixed(2).replace('.',',');
 const STAT={atk:'ATQ',def:'DEF',speed:'VEL',accuracy:'PREC'};
+// A cadeia antiga pode ocultar Recuperar/Recover do catálogo de alguns psíquicos.
+const v345PrevCatalogue=v32Catalogue;
+v32Catalogue=function(m){
+ const result=v345PrevCatalogue(m);if(!m||![64,65,121,150].includes(m.id))return result;
+ if(!result.some(x=>x.move?.name==='Recover'&&x.available)&&m.level>=28){
+  const move={name:'Recover',type:'psychic',kind:'recover',power:0,cost:36,cd:8800,cat:'status',icon:'💚'};
+  const key=v32MoveKey(move);
+  const idx=result.findIndex(x=>x.move?.name==='Recover');
+  if(idx>=0){result[idx]={...result[idx],key,move,tm:false,level:28,available:true};}
+  else result.push({key,move,level:28,tm:false,available:true});
+ }
+ return result;
+};
 const oldDrawMon=BattleEngine.prototype.drawMon;
 BattleEngine.prototype.drawMon=function(actor,id,enemy,now){
  const factor=SCALE[id-1]||.95,ctx=this.ctx;
