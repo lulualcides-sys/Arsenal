@@ -1,0 +1,116 @@
+
+/* V28_PATCH: WebAssembly C++, Kanto FireRed/LeafGreen, recompensas 30-90%, ataques gratuitos personalizados */
+const V28_PATCH_VERSION="28.0";
+let v28Wasm=null;
+(async()=>{try{const b=Uint8Array.from(atob("AGFzbQEAAAABFQJgCH19fX19fX19AX9gBH19fX0BfQMDAgABBAUBcAEBAQUDAQACBggBfwFBgIgECwctAwZtZW1vcnkCAA1iYXR0bGVfZGFtYWdlAAAQZGlzdGFuY2Vfc3F1YXJlZAABCrYBApsBAAJAIAJDrkfhPpQgBEMAAEBBlZJDAAAAQJIgAkPNzIw/lCAAkkMAAMhBkkMAAIA/IANDZmZmP5QgAZJDAADIQZIiAiACQwAAgD9dG5WUIAWUIAaUIAeUIgJDAAAAAF1FDQBBAA8LAkAgAkMAPBxGXkUNAEGPzgAPCwJAIAJDAAAAP5IiAotDAAAAT11FDQAgAqgPC0GAgICAeAsXACAAIAKTIgIgApQgASADkyIDIAOUkgs="),c=>c.charCodeAt(0));
+const r=await WebAssembly.instantiate(b,{});v28Wasm=r.instance.exports;
+console.info("Pokemon Torre V28: C++/WASM ativo");
+}catch(e){console.warn("WASM indisponível; fallback JS",e);}})();
+const V28_GYM_CANON=[
+{leader:"Brock",id:[[74,12],[95,14]],type:"rock",max:14,cap:18},
+{leader:"Misty",id:[[120,18],[121,21]],type:"water",max:21,cap:25},
+{leader:"Lt. Surge",id:[[100,21],[25,18],[26,24]],type:"electric",max:24,cap:30},
+{leader:"Erika",id:[[71,29],[114,24],[45,29]],type:"grass",max:29,cap:36},
+{leader:"Koga",id:[[109,37],[109,37],[89,39],[110,43]],type:"poison",max:43,cap:49},
+{leader:"Sabrina",id:[[64,38],[122,37],[49,38],[65,43]],type:"psychic",max:43,cap:49},
+{leader:"Blaine",id:[[58,42],[77,40],[78,42],[59,47]],type:"fire",max:47,cap:55},
+{leader:"Giovanni",id:[[111,45],[51,42],[31,44],[34,45],[111,50]],type:"ground",max:50,cap:59}
+];
+for(let i=0;i<8;i++){const c=V28_GYM_CANON[i];
+Object.assign(GYMS[i],{leader:c.leader,type:c.type,boss:c.id.map(p=>p[0]),max:c.max,levelCap:c.cap});}
+const v28TeamOld=teamOfTrainer;
+teamOfTrainer=function(g,stage){if(g>=0&&g<8&&stage===6)return V28_GYM_CANON[g].id.map(([id,lvl])=>mon(id,lvl));return v28TeamOld(g,stage);};
+const V28_TYPE_BASIC={
+normal:["Investida","normal","dash","✹",17,920],
+fire:["Brasa","fire","bolt","🔥",16,1070],
+water:["Bolhas","water","bolt","💦",16,1100],
+electric:["Faísca","electric","bolt","⚡",16,1080],
+grass:["Chicote de Vinha","grass","bolt","🌿",16,1090],
+poison:["Picada Venenosa","poison","bolt","☣️",16,1110],
+psychic:["Confusion","psychic","bolt","🔮",17,1130],
+ice:["Caco de Gelo","ice","bolt","❄️",16,1100],
+ground:["Tapa de Lama","ground","bolt","🟤",16,1120],
+rock:["Arremesso de Pedra","rock","bolt","🪨",17,1180],
+ghost:["Lambida","ghost","bolt","👻",16,1120],
+fighting:["Soco","fighting","dash","🥊",18,1000],
+flying:["Rajada","flying","bolt","🪶",16,1050],
+bug:["Picada","bug","dash","🪲",16,950],
+dragon:["Sopro do Dragão","dragon","bolt","🐉",17,1180],
+steel:["Garra de Metal","steel","dash","⚙️",17,1000],
+fairy:["Vento de Fada","fairy","bolt","✨",16,1110],
+dark:["Mordida","dark","dash","🌘",17,990]
+};
+const V28_SPECIES_BASIC={
+1:["Chicote de Vinha","grass","bolt","🌱",17,1050],
+4:["Arranhão","normal","dash","✹",17,880],
+6:["Brasa","fire","bolt","🔥",17,1050],
+7:["Bolhas","water","bolt","💧",16,1040],
+9:["Jato d’Água","water","bolt","🌊",17,1070],
+25:["Faísca","electric","bolt","⚡",16,1120],
+26:["Choque do Trovão","electric","bolt","⚡",18,1080],
+31:["Slam","normal","dash","💥",20,1090],
+34:["Slam","normal","dash","💥",20,1090],
+51:["Arranhão","normal","dash","✹",18,970],
+59:["Mordida","dark","dash","🌘",18,1010],
+63:["Confusion","psychic","bolt","🔮",17,1130],
+64:["Confusion","psychic","bolt","🔮",18,1120],
+65:["Confusion","psychic","bolt","🔮",19,1060],
+74:["Soco de Pedra","rock","dash","🪨",17,1050],
+95:["Investida","normal","dash","✹",19,1030],
+100:["Faísca","electric","bolt","⚡",16,1140],
+109:["Ácido","poison","bolt","☣️",16,1150],
+110:["Ácido","poison","bolt","☣️",18,1080],
+120:["Pistola d’Água","water","bolt","💧",16,1050],
+121:["Jato d’Água","water","bolt","💧",18,1050],
+122:["Confusion","psychic","bolt","🔮",18,1090],
+133:["Investida","normal","dash","✹",17,940]
+};
+const v28SkillOld=skillSet;
+skillSet=function(m){const list=v28SkillOld(m);const def=V28_SPECIES_BASIC[m.id]||V28_TYPE_BASIC[D[m.id]?.type]||V28_TYPE_BASIC.normal;
+const [name,type,kind,icon,power,cd]=def;list[0]={name,type,kind,icon,power,cd,cost:0,cat:kind==="dash"?"physical":"special"};return list;};
+const v28DamageOld=damage;
+damage=function(attacker,defender,type,power){if(!v28Wasm?.battle_damage)return v28DamageOld(attacker,defender,type,power);
+const a=D[attacker.id],d=D[defender.id],mult=advantage(type||"normal",d),stab=(type===a.type||type===a.type2)?1.35:1;
+const hit=v28Wasm.battle_damage(a.atk,d.def,attacker.level,defender.level,power,stab,mult,.88+Math.random()*.23);
+return {hit:Math.max(0,hit),mult};};
+const v28DistOld=BattleEngine.prototype.dist;
+BattleEngine.prototype.dist=function(a,b){return v28Wasm?.distance_squared?Math.sqrt(v28Wasm.distance_squared(a.x,a.y,b.x,b.y)):v28DistOld.call(this,a,b);};
+const v28StartOld=startBattle;
+startBattle=function(enemies,label,wild){
+v28StartOld(enemies,label,wild);
+if(!battle?.active||wild||save.gym>=8||save.stage!==6||!label.includes("LÍDER"))return;
+battle.v28LeaderGym=save.gym;
+battle.v28GiftChance=Math.round(30+Math.random()*60);
+const chip=document.createElement("span");chip.id="v28ChanceChip";chip.className="v28ChanceChip";
+chip.textContent="🎁 Pokémon do líder · chance "+battle.v28GiftChance+"%";
+document.querySelector(".battleHeading")?.append(chip);
+};
+const v28FinishOld=finishBattle;
+finishBattle=function(win){
+if(!battle?.active)return;
+const g=battle.v28LeaderGym,chance=battle.v28GiftChance;
+const eligible=win&&Number.isInteger(g)&&g>=0&&g<8&&Number.isFinite(chance)&&save.gym===g&&save.stage===6;
+const won=eligible&&Math.random()*100<chance;
+const reward=won?V28_GYM_CANON[g].id[Math.floor(Math.random()*V28_GYM_CANON[g].id.length)]:null;
+v28FinishOld(win);
+if(!eligible)return;
+let message;
+if(reward){const [id,level]=reward,m=mon(id,level);if(save.team.length<6)save.team.push(m);else save.box.push(m);
+if(!save.seen.includes(id))save.seen.push(id);
+if(!save.caught.includes(id))save.caught.push(id);
+persist();
+message="🎁 CHANCE "+chance+"% · VOCÊ GANHOU "+D[id].name.toUpperCase()+" Nv."+level+"! "+(save.team.includes(m)?"Equipe.":"Caixa.");
+}else{message="🎲 CHANCE "+chance+"% · não veio Pokémon surpresa desta vez. Insígnia mantida.";}
+const result=document.querySelector("#modal .result");
+if(result){const box=document.createElement("div");box.className="v28LeaderGift"+(reward?" won":"");box.textContent=message;result.insertAdjacentElement("afterend",box);}
+};
+const v28RenderOld=render;
+render=function(){
+v28RenderOld();if(save.gym>=8)return;
+const c=V28_GYM_CANON[save.gym],info=document.querySelector(".gymHero .leader");
+if(info&&c){const el=document.createElement("div");el.className="v28LeaderRoster";el.textContent="👑 "+c.id.map(([id,l])=>D[id].name+" Nv."+l).join(" · ");info.insertAdjacentElement("afterend",el);}
+if(save.stage===6){const row=document.querySelector(".actionRow");
+if(row){const el=document.createElement("p");el.className="v28GymGiftHint";el.textContent="🎁 Vitória contra líder: chance aleatória de 30% a 90% para ganhar um dos Pokémon dele.";row.insertAdjacentElement("afterend",el);}}
+};
+const v28Style=document.createElement("style");v28Style.textContent=".v28ChanceChip{font-size:10px;color:#ffe6a2;background:#172e42;border:1px solid #9c8151;border-radius:999px;padding:5px 8px;white-space:nowrap}.v28LeaderGift{margin:12px 0;padding:12px 14px;border-radius:12px;border:1px solid #8b795a;background:#27303b;color:#f6dfae;font-weight:800;font-size:13px;line-height:1.5;text-align:center}.v28LeaderGift.won{border-color:#69d6b0;background:#173c39;color:#d6ffed}.v28LeaderRoster{font-size:11px;line-height:1.5;color:#e6f1fb;margin-top:7px;position:relative;z-index:1}.v28GymGiftHint{margin-top:11px;font-size:11px;color:#fee7ad;line-height:1.5}@media(max-width:650px){.v28ChanceChip{font-size:9px;white-space:normal}.battleHeading{flex-wrap:wrap;row-gap:6px}}";document.head.appendChild(v28Style);
+/* V28_PATCH_END */
