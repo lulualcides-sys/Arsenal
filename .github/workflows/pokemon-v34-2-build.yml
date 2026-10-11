@@ -27,8 +27,8 @@ jobs:
           from pathlib import Path
           base=Path('jogos-html/pokemon-torre-v34/index.html').read_text(encoding='utf-8')
           patch=Path('jogos-html/pokemon-torre-v34-2/patch.js').read_text(encoding='utf-8')
-          marker='/* FIM POKÉMON TORRE V34 */'
-          assert base.count(marker)==1,'Base V34 inesperada'
+          marker=next((m for m in ('/* FIM POKÉMON TORRE V34 */','/* END POKEMON TORRE V34 */') if base.count(m)==1),None)
+          assert marker, 'Base V34 inesperada: marcador de finalização ausente'
           assert patch.count('/* FIM POKEMON TORRE V34.2 */')==1
           assert all(x in patch for x in ('v342LaunchPrevious','PokemonTorreV342Diagnostics','v342Bolt','STATUS_DEFS'))
           # Versões anteriores usavam sideState inexistente ao iniciar alguns chefes com Intimidate.
