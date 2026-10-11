@@ -1428,7 +1428,7 @@ function v27WildOdds(g){
 }
 function v27ChooseWild(g){const options=v27WildOdds(g);let roll=Math.random()*options.reduce((s,x)=>s+x.weight,0);for(const p of options){roll-=p.weight;if(roll<=0)return p.id;}return options[options.length-1]?.id||16;}
 grassEncounter=function(){
- if(save.balls<=0||save.gym>=8)return;
+ if((save.balls+save.superBalls+save.ultraBalls)<=0||save.gym>=8)return;
  const key=`${save.gym}-${save.stage}`,used=save.routeUsed[key]||0;
  if(save.stage<1||save.stage>v29TrainerCount(save.gym)||used>=3)return;
  save.routeUsed[key]=used+1;const gym=GYMS[save.gym],id=v27ChooseWild(save.gym);
@@ -1437,7 +1437,7 @@ grassEncounter=function(){
 };
 function v27ShowOdds(){
  if(save.gym>=8)return;
- const options=v27WildOdds(save.gym),used=save.routeUsed[`${save.gym}-${save.stage}`]||0,can=save.stage>=1&&save.stage<=v29TrainerCount(save.gym)&&used<3&&save.balls>0;
+ const options=v27WildOdds(save.gym),used=save.routeUsed[`${save.gym}-${save.stage}`]||0,can=save.stage>=1&&save.stage<=v29TrainerCount(save.gym)&&used<3&&(save.balls+save.superBalls+save.ultraBalls)>0;
  overlay(`<div class="sectionhead"><div><div class="overline">ROTA ${save.gym+1} · ENCONTROS REAIS</div><h2>🌿 Pokémon da grama</h2></div><button class="btn tiny ghost" id="v27CloseOdds">✕</button></div><p class="desc">As chances abaixo são as usadas no sorteio desta rota, antes de aparecer cada Pokémon. Você tem ${Math.max(0,3-used)} encontros nesta parada.</p><div class="v27OddsList">${options.map((o,i)=>`<div class="v27Odds"><span class="v27OddsNo">#${String(o.id).padStart(3,'0')}</span>${img(o.id)}<span class="v27OddsName">${o.name}</span><div class="v27OddsRail"><i style="width:${Math.min(100,o.pct*7)}%"></i></div><strong>${o.pct.toFixed(2).replace('.',',')}%</strong></div>`).join('')}</div><button class="btn ${can?'gold':'ghost'} wide" id="v27CatchFromOdds" ${can?'':'disabled'} style="margin-top:13px">🔴 PROCURAR POKÉMON</button>`);
  $('v27CloseOdds').onclick=close;$('v27CatchFromOdds').onclick=()=>{if(!can)return;close();grassEncounter()};
 }
