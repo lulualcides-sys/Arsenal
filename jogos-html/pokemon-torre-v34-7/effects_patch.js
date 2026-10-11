@@ -28,7 +28,7 @@ const SPECIAL={
 };
 function norm(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/ig,'').toLowerCase();}
 const MAP={};for(const [k,v] of Object.entries(SPECIAL))MAP[norm(k)]=v;
-const files=[...new Set(Object.values(TYPE_SHEETS).flat().concat(Object.values(MAP)))];
+const files=[...new Set(Object.values(TYPE_SHEETS).flat().concat(Object.values(MAP),['shock_2','ice_chunk','fire_plume','toxic_bubble','snore_z','spiral']))];
 const art={};
 for(const name of files){
  const pic=new Image();pic.decoding='async';pic.crossOrigin='anonymous';
