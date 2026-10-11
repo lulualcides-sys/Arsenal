@@ -29,9 +29,9 @@ window.__347Test={
   return {ready:before,keptCustom:after,active:!!battle?.active};
  },
  cast(){
-  const m=save.team[0],catalogue=v32Catalogue(m),fire=catalogue.find(x=>x.available&&x.move.type==='fire'&&x.move.power>0);
+  const m=save.team[0],catalogue=window.__347Catalogue(m),fire=catalogue.find(x=>x.available&&x.move.type==='fire'&&x.move.power>0);
   if(!fire)return {error:'Golpe de fogo indisponível'};
-  m.v32Slots=[fire.key,...v32DefaultSlots(m).slice(1)];
+  m.v32Slots=[fire.key,...window.__347Defaults(m).slice(1)];
   engine.v25.entry=[];battle.paused=false;battle.energy=100;cooldowns=[0,0,0,0];
   engine.useMove(0);engine.v25.stats.enemy.conditions=['poison'];engine.draw(performance.now());
   return {name:skillSet(m)[0].name,active:engine.v347Sprites?.length||0,
@@ -40,6 +40,8 @@ window.__347Test={
  oldVersion(){return typeof PokemonTorreV346Diagnostics==='function';}
 };
 """
+assert html.count("/* END V33.1 */")==1
+html=html.replace("/* END V33.1 */","/* END V33.1 */\nwindow.__347Catalogue=(m)=>v32Catalogue(m);window.__347Defaults=(m)=>v32DefaultSlots(m);",1)
 html=html.replace(marker,"\n"+bridge+marker)
 with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,args=["--no-sandbox","--disable-gpu"])
