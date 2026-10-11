@@ -1,6 +1,12 @@
 /* POKEMON TORRE V30 — PATCH UNIFICADO 2D: 10 MECANICAS + CAMERA + BACKUPS */
 const V30_VERSION='30.0';
 function v29TrainerCount(g){return Number.isInteger(g)&&g>=0&&g<8?6+g:6;}
+// Estado local de habilidades; evita depender de auxiliares removidos em versões anteriores.
+function sideState(side){
+ if(!battle)return {atk:0,def:0,paralyze:0};
+ if(!battle.v30Stats)battle.v30Stats={ally:{atk:0,def:0,paralyze:0},enemy:{atk:0,def:0,paralyze:0}};
+ return battle.v30Stats[side==='enemy'?'enemy':'ally'];
+}
 
 const V30_SAFE_SAVE='pokeTorreKantoV30Safety';
 const V30_MISSIONS_KEY='pokeTorreKantoV30Missions';
@@ -136,6 +142,10 @@ function v30Ability(id){for(const [k,values] of Object.entries(V30_ABILITY))if(v
 const v30OriginalDamage=damage;
 damage=function(attacker,defender,type,power){
  const r=v30OriginalDamage(attacker,defender,type,power);if(!attacker||!defender)return r;
+ const allyMon=battle?.active?current():null;
+ const atkStat=allyMon&&attacker===allyMon?sideState('ally'):sideState('enemy');
+ const defStat=allyMon&&defender===allyMon?sideState('ally'):sideState('enemy');
+ r.hit=Math.max(0,Math.round(r.hit * Math.max(.45,1+(atkStat.atk||0)*.14) / Math.max(.45,1+(defStat.def||0)*.14)));
  if(type==='ground'&&v30Ability(defender.id)==='Levitate'){r.hit=0;r.mult=0;return r;}
  const ab=v30Ability(attacker.id),low=attacker.hp<=attacker.maxHp/3;
  if(low&&((ab==='Blaze'&&type==='fire')||(ab==='Torrent'&&type==='water')||(ab==='Overgrow'&&type==='grass')))r.hit=Math.min(9999,Math.round(r.hit*1.30));
@@ -230,6 +240,7 @@ render=function(){v30OriginalRender();
 const v30AIOriginal=BattleEngine.prototype.update;
 BattleEngine.prototype.update=function(dt,now){const old=v30AIOriginal.call(this,dt,now);if(!battle?.active||battle.wild)return old;
  const g=save.gym,step=save.stage,difficulty=Math.min(1,g/10+(step/16));
+ if(sideState('enemy').paralyze&&this.enemyAttackCD<.8)this.enemyAttackCD=.8;
  if(this.enemyAttackCD>1.65){this.enemyAttackCD=Math.max(1.25,this.enemyAttackCD-dt*.22*difficulty);}
  if(difficulty>.5&&this.foeDodgeCD>2.6)this.foeDodgeCD=2.6;
  return old;
