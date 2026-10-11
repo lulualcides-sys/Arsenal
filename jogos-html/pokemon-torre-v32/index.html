@@ -2828,7 +2828,7 @@ function v32Catalogue(monster){
  if(!monster||!D[monster.id])return [];
  const p=D[monster.id],base=v32BaseSkills(monster),known=new Map();
  function add(move,level=1,tm=false){if(!move||!move.name)return;const item={...move,cat:move.cat||(move.power?'special':'status')};if(item.kind==='homing')item.cd=Math.max(10000,item.cd||0);
-  const key=v32MoveKey(item);if(!known.has(key))known.set(key,{key,move:item,level,tm,available:!tm?monster.level>=level:save.v32.tms.includes(p.type)||save.v32.tms.includes(p.type2)||save.v32.tms.includes(item.type)});
+  const key=v32MoveKey(item);if(!known.has(key))known.set(key,{key,move:item,level,tm,available:!tm?monster.level>=level:save.v32.tms.includes(item.type)});
  }
  for(const x of base)add(x);
  const types=[...new Set([p.type,p.type2].filter(Boolean))];
