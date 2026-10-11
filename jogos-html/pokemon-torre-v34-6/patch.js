@@ -152,8 +152,8 @@ function orderEditor(){
  list.setAttribute('data-v346-sorted','1');
  return true;
 }
-const prevOverlay=overlay;
-overlay=function(){const result=prevOverlay.apply(this,arguments);orderEditor();return result;};
+const sortObserver=new MutationObserver(()=>{const list=document.querySelector('#modal .v331MoveList');if(list&&list.getAttribute('data-v346-sorted')!=='1')orderEditor();});
+sortObserver.observe(document.body,{childList:true,subtree:true});
 const prevUse=BattleEngine.prototype.useMove;
 BattleEngine.prototype.useMove=function(i){
  const b=battle,m=b?.active?current():null,s=m?skillSet(m)?.[i]:null,now=performance.now(),prior=cooldowns[i]||0;
