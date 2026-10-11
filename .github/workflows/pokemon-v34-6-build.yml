@@ -1,0 +1,59 @@
+name: Pokemon Torre V34.6 - Golpes Clima Menu
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jogos-html/pokemon-torre-v34-6/patch.js"
+      - "jogos-html/pokemon-torre-v34-6/smoke_test.py"
+      - ".github/workflows/pokemon-v34-6-build.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Montar HTML completo V34.6
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root=Path("jogos-html")
+          source=(root/"pokemon-torre-v34-5/index.html").read_text(encoding="utf-8")
+          patch=(root/"pokemon-torre-v34-6/patch.js").read_text(encoding="utf-8")
+          marker="/* FIM POKEMON TORRE V34.5 */"
+          assert source.count(marker)==1,"Ponto de inserção V34.5 mudou"
+          assert patch.count("/* FIM POKEMON TORRE V34.6 */")==1
+          output=source.replace(marker,marker+"\n"+patch,1)
+          target=root/"pokemon-torre-v34-6/index.html"
+          target.write_text(output,encoding="utf-8")
+          js=output.split("<script>",1)[1].split("</script>",1)[0]
+          Path("/tmp/v346.js").write_text(js,encoding="utf-8")
+          print("HTML V34.6",len(output.encode("utf-8")),"bytes")
+          PY
+          node --check /tmp/v346.js
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar navegador de teste
+        shell: bash
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Regressão mobile de menu, ataques e ambientes
+        shell: bash
+        run: python jogos-html/pokemon-torre-v34-6/smoke_test.py
+      - name: Publicar V34.6
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jogos-html/pokemon-torre-v34-6/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "build(pokemon): HTML V34.6 clima e golpes referencia"
+            git push
+          fi
