@@ -1,0 +1,36 @@
+name: Pokemon Torre V30 smoke checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'jogos-html/pokemon-torre-v30/**'
+      - '.github/workflows/pokemon-v30-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extrair JavaScript e validar 10 subsistemas
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('jogos-html/pokemon-torre-v30/index.html').read_text()
+          patch=Path('jogos-html/pokemon-torre-v30/patch.js').read_text()
+          assert '<!doctype html>' in s
+          assert s.count('render();\n})();')==1
+          assert patch in s
+          expected=['V30_VERSION','v29TrainerCount(g)','v30BossPhase','v30EvolutionQueue',
+            'V30_MOVE_TRAITS','v30Ability','v30AdvanceMission','V30_SAFE_SAVE',
+            'v27TrainerThrow','v30OriginalLaunch','v27Cinematic']
+          assert all(x in s for x in expected),[x for x in expected if x not in s]
+          assert 'v29TrainerCount(save.gym)-step' in s
+          assert 'V28_KANTO_LEADERS' in s and 'Phaser' in s and 'WebAssembly' in s
+          js=s.split('<script>',1)[1].split('</script>',1)[0]
+          Path('/tmp/pokemon-v30.js').write_text(js)
+          print('V30 payload',len(s.encode('utf8')),'bytes','patch',len(patch.encode('utf8')),'bytes')
+          PY
+          node --check /tmp/pokemon-v30.js
