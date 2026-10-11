@@ -31,7 +31,7 @@ window.__v34Test={
   const count=document.querySelectorAll("[data-v331-slot]").length;
   const names=skillSet(save.team[0]).map(m=>m.name);
   const opts=[...document.querySelectorAll('[data-v331-pick]:not(:disabled)')];
-  const catalogue=v32Catalogue(save.team[0]);
+  const catalogue=window.__v34Catalogue(save.team[0]);
   const choose=opts.find(el=>{
    const entry=catalogue[Number(el.dataset.v331Pick)];
    return entry?.available && !names.includes(entry.move.name);
@@ -59,7 +59,7 @@ window.__v34Test={
   return {active:true,after:[...cooldowns],energy:battle.energy,before};
  }
 };"""
-testpage=source.replace(marker,"\n"+harness+marker)
+testpage=source.replace("/* END V33.1 */","/* END V33.1 */\nwindow.__v34Catalogue = (m)=>v32Catalogue(m);",1).replace(marker,"\n"+harness+marker)
 
 with sync_playwright() as pw:
     browser=pw.chromium.launch(headless=True,args=["--no-sandbox","--disable-gpu"])
