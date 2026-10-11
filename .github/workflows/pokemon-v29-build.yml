@@ -51,6 +51,9 @@ jobs:
             n=s.count(old)
             assert n>0, ("A regra do jogo mudou, abortando montagem:",old)
             s=s.replace(old,new)
+          # Super Ball e Ultra Ball devem permitir encontros mesmo sem Pokebolas comuns.
+          s=s.replace("used<3&&save.balls>0","used<3&&(save.balls+save.superBalls+save.ultraBalls)>0")
+          s=s.replace("if(save.balls<=0||save.gym>=8)return;","if((save.balls+save.superBalls+save.ultraBalls)<=0||save.gym>=8)return;")
           assert "function v29TrainerCount(g)" in patch
           assert "V29_SIGNATURES" in patch and "v29OldFinishBattle" in patch
           marker="render();\n})();"
