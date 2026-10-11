@@ -27,7 +27,8 @@ window.__v344Test={
   return {auto:!!battle.v31Duo&&!battle.v31Duo.v33Manual};}
 };
 """
-s=s.replace(marker,"\n"+bridge+marker)
+assert s.count("/* END V33.1 */")==1
+s=s.replace("/* END V33.1 */","/* END V33.1 */\n"+bridge,1)
 with sync_playwright() as pw:
  browser=pw.chromium.launch(headless=True,args=["--no-sandbox","--disable-gpu"])
  page=browser.new_page(viewport={"width":390,"height":844},is_mobile=True,has_touch=True,device_scale_factor=1)
