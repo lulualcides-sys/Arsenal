@@ -1,0 +1,56 @@
+name: Pokemon Torre V33 - Build 2D e testes
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jogos-html/pokemon-torre-v33/patch.js"
+      - "jogos-html/pokemon-torre-v32/index.html"
+      - ".github/workflows/pokemon-v33-build.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Integrar unico patch V33 e validar 151 Pokemon
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          base=Path("jogos-html/pokemon-torre-v32/index.html").read_text(encoding="utf-8")
+          patch=Path("jogos-html/pokemon-torre-v33/patch.js").read_text(encoding="utf-8")
+          needle="})();\n/* FIM POKEMON TORRE V32 */"
+          assert base.count(needle)==1,"A base mudou, atualize o builder antes de publicar"
+          assert base.count("<title>Pokémon Torre V32 — Kanto 2D</title>")==1
+          assert patch.startswith("/* POKEMON TORRE V33")
+          assert patch.rstrip().endswith("/* FIM POKEMON TORRE V33 */")
+          m=re.search(r'const V33_SPECIES_MOVES=\{(.*?)\};',patch,re.S)
+          assert m, "Mapa de golpes nao encontrado"
+          ids=list(map(int,re.findall(r'(?m)^\s*(\d+):\[',m.group(1))))
+          assert len(ids)==151 and set(ids)==set(range(1,152)), "151 especies nao cobertas"
+          checks=["v33TrainingMenu","v33LabMenu","v33LegendMenu","v33HistoryMenu","v33BattleTools","V33_LEADERS","PokemonTorreV33Diagnostics","V33_FX_COLORS","v33SkillPrev"]
+          assert all(k in patch for k in checks), "V33 incompleta"
+          out=base.replace(needle,patch+"\n"+needle,1)
+          out=out.replace("<title>Pokémon Torre V32 — Kanto 2D</title>","<title>Pokémon Torre V33 — Kanto 2D</title>",1)
+          p=Path("jogos-html/pokemon-torre-v33/index.html")
+          p.write_text(out,encoding="utf-8")
+          js=out.split("<script>",1)[1].split("</script>",1)[0]
+          Path("/tmp/pokemon_v33.js").write_text(js,encoding="utf-8")
+          assert len(out)>2500000 and out.count("PokemonTorreV33Diagnostics")==1
+          print("V33 HTML bytes",len(out.encode()),"species",len(ids),"patch bytes",len(patch.encode()))
+          PY
+          node --check /tmp/pokemon_v33.js
+      - name: Publicar somente a V33 e preservar a V32
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jogos-html/pokemon-torre-v33/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "build(pokemon): V33 standalone 2D testado"
+            git push
+          fi
