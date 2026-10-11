@@ -1,0 +1,47 @@
+name: Pokemon Torre V33.1 - Build e smoke checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jogos-html/pokemon-torre-v33-1/patch.js"
+      - "jogos-html/pokemon-torre-v33/index.html"
+      - ".github/workflows/pokemon-v33-1-build.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Montar V33.1 e validar JS
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          src=Path("jogos-html/pokemon-torre-v33/index.html").read_text(encoding="utf-8")
+          patch=Path("jogos-html/pokemon-torre-v33-1/patch.js").read_text(encoding="utf-8")
+          needle="})();\n/* FIM POKEMON TORRE V32 */"
+          assert src.count(needle)==1, "Closure V32 inesperada"
+          required=["v331ChoosePokemon","v331MovesEditor","v331TrainerInfo","v331ArrangeDouble","PokemonTorreV331Diagnostics","v331OldSkillClick"]
+          assert all(x in patch for x in required), "Arquivo de correcoes incompleto"
+          out=src.replace(needle,patch+"\n"+needle,1)
+          out=out.replace("Pokémon Torre V33 — Kanto 2D","Pokémon Torre V33.1 — Kanto 2D",1)
+          assert out.count("PokemonTorreV331Diagnostics")==1
+          Path("jogos-html/pokemon-torre-v33-1/index.html").write_text(out,encoding="utf-8")
+          Path("/tmp/v331.js").write_text(out.rsplit("<script>",1)[1].split("</script>",1)[0],encoding="utf-8")
+          print("V33.1 assembled",len(out),"chars")
+          PY
+          node --check /tmp/v331.js
+      - name: Commit jogo 2D completo
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jogos-html/pokemon-torre-v33-1/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "build(pokemon): V33.1 repaired double battle, Kanto trainers and moves"
+            git push
+          fi
