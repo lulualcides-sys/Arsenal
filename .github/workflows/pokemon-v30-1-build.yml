@@ -1,0 +1,48 @@
+name: Pokemon Torre V30.1 - Build e validar
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jogos-html/pokemon-torre-v30-1/reset_patch.js"
+      - "jogos-html/pokemon-torre-v30-1/features_patch.js"
+      - "jogos-html/pokemon-torre-v30/index.html"
+      - ".github/workflows/pokemon-v30-1-build.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Construir V30.1 e verificar JavaScript
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          src=Path("jogos-html/pokemon-torre-v30/index.html").read_text()
+          reset=Path("jogos-html/pokemon-torre-v30-1/reset_patch.js").read_text()
+          features=Path("jogos-html/pokemon-torre-v30-1/features_patch.js").read_text()
+          assert "v301ConfirmReset" in reset and "stopImmediatePropagation" in reset
+          assert "V301_HOMING_COOLDOWN = 10000" in features
+          assert "V301_SHINY_MIN = 0.01" in features and "V301_SHINY_MAX = 0.03" in features
+          assert src.count("const caught=mon(m.id,m.level);")==2, "Verifique fluxo de captura antes de publicar"
+          src=src.replace("const caught=mon(m.id,m.level);","const caught=mon(m.id,m.level);caught.shiny=!!m.shiny;")
+          marker="render();\n})();"
+          assert src.count(marker)==1, "Final do script mudou"
+          src=src.replace(marker,reset+"\n"+features+"\n"+marker)
+          src=src.replace("<title>Pokémon Torre V30 — Kanto 2D</title>","<title>Pokémon Torre V30.1 — Kanto 2D</title>")
+          assert src.count("caught.shiny=!!m.shiny;")==2
+          Path("jogos-html/pokemon-torre-v30-1/index.html").write_text(src)
+          Path("/tmp/pokemon_v30_1.js").write_text(src.rsplit("<script>",1)[1].split("</script>",1)[0])
+          print("V30.1 assembled:",len(src),"characters")
+          PY
+          node --check /tmp/pokemon_v30_1.js
+      - name: Publicar arquivo unificado no Arsenal
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jogos-html/pokemon-torre-v30-1/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "build(pokemon): V30.1 reset Shiny knockout cooldown"
+            git push
+          fi
