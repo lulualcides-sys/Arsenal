@@ -1,0 +1,54 @@
+name: Pokemon Torre V28.1 - Build 2D
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jogos-html/pokemon-torre-v28-1/patch.js"
+      - "jogos-html/pokemon-torre-v28/index.html"
+      - ".github/workflows/pokemon-v28-1-build.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Montar V28.1 com sombras removidas e miniaturas corrigidas
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          base=Path("jogos-html/pokemon-torre-v28/index.html").read_text(encoding="utf-8")
+          patch=Path("jogos-html/pokemon-torre-v28-1/patch.js").read_text(encoding="utf-8")
+          old="""  const shadowW=r*(enemy?1.06:.98),shadowH=r*(enemy?.19:.16);
+            c.fillStyle='#08101abb';c.beginPath();c.ellipse(e.x,e.y+r*.49,shadowW,shadowH,0,0,Math.PI*2);c.fill();
+            c.strokeStyle=hexOpacity(aura,.10+glowPulse*.28);c.lineWidth=enemy?3.2:2.6;c.shadowColor=aura;c.shadowBlur=enemy?22:14;
+            c.beginPath();c.ellipse(e.x,e.y+r*.47,shadowW*1.12,shadowH*1.22,0,0,Math.PI*2);c.stroke();"""
+          old=old.replace("            c.", "  c.")
+          new="  // V28.1: sombra eliptica e circulo removidos, mantendo o sprite e os efeitos dos golpes."
+          assert base.count(old)==1,"Sombras do Pokemon nao encontradas: abortando."
+          base=base.replace(old,new,1)
+          marker="render();\n})();"
+          assert base.count(marker)==1,"Final do script inesperado: abortando."
+          base=base.replace(marker,patch+"\n"+marker,1)
+          base=base.replace("<title>Pokémon Torre V28 — Kanto 2D</title>","<title>Pokémon Torre V28.1 — Kanto 2D</title>",1)
+          output=Path("jogos-html/pokemon-torre-v28-1/index.html")
+          output.write_text(base,encoding="utf-8")
+          assert all(x in base for x in ("v281SettingsButton","v281Restart","v27Odds .spritewrap:has","V28_BATTLE_WASM_B64"))
+          Path("/tmp/pokemon-v28-1.js").write_text(base.split("<script>",1)[1].split("</script>",1)[0],encoding="utf-8")
+          print("V28.1 validada:",len(base),"caracteres")
+          PY
+          node --check /tmp/pokemon-v28-1.js
+      - name: Publicar HTML atualizado no repositorio
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jogos-html/pokemon-torre-v28-1/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "build(pokemon): V28.1 interface corrigida"
+            git push
+          fi
