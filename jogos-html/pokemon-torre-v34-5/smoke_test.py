@@ -12,9 +12,9 @@ window.__test345={
   return PokemonTorreV345Diagnostics();
  },
  recover(slot){
-  stopTimers();battle=null;const m=save.team[0],cat=v32Catalogue(m);
+  stopTimers();battle=null;const m=save.team[0],cat=window.__345Catalogue(m);
   const rec=cat.find(x=>x.move.name==='Recover'&&x.available);if(!rec)return {error:'Recover nao esta disponivel'};
-  m.v32Slots=[...v32DefaultSlots(m)];m.v32Slots[slot]=rec.key;
+  m.v32Slots=[...window.__345Defaults(m)];m.v32Slots[slot]=rec.key;
   const ability=skillSet(m)[slot]?.name;
   const coins=save.coins;
   m.hp=Math.max(1,m.maxHp-72);
@@ -27,9 +27,9 @@ window.__test345={
   return {ability,beforeHP,afterHP,max:m.maxHp,energySpent:energy-afterEnergy,cooldown:afterCooldown,cooldownHeld:cooldowns[slot]===afterCooldown,coinsUnchanged:save.coins===coins,heals:engine.v345Cures};
  },
  status(){
-  stopTimers();battle=null;const m=save.team[0],cat=v32Catalogue(m),move=cat.find(x=>x.move.name==='Calm Mind'&&x.available);
+  stopTimers();battle=null;const m=save.team[0],cat=window.__345Catalogue(m),move=cat.find(x=>x.move.name==='Calm Mind'&&x.available);
   if(!move)return {error:'Calm Mind not found'};
-  m.v32Slots=[...v32DefaultSlots(m)];m.v32Slots[1]=move.key;
+  m.v32Slots=[...window.__345Defaults(m)];m.v32Slots[1]=move.key;
   const used=skillSet(m)[1]?.name;
   startBattle([mon(74,42)],'TESTE STATUS',false);engine.v25.entry=[];battle.paused=false;battle.energy=100;cooldowns=[0,0,0,0];
   const b=engine.v25.stats.player.atk;
@@ -54,6 +54,8 @@ window.__test345={
  }
 };
 """
+assert s.count("/* END V33.1 */")==1
+s=s.replace("/* END V33.1 */","/* END V33.1 */\nwindow.__345Catalogue=v32Catalogue;window.__345Defaults=v32DefaultSlots;",1)
 s=s.replace(marker,"\n"+api+marker)
 with sync_playwright() as p:
  b=p.chromium.launch(headless=True,args=["--no-sandbox","--disable-gpu"])
