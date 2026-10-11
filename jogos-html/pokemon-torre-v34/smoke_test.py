@@ -38,7 +38,7 @@ window.__v34Test={
   });
   if(choose)choose.click();
   const after=skillSet(save.team[0]).map(m=>m.name);
-  return {count,options:opts.length,chosen:choose?catalogue[Number(choose.dataset.v331Pick)]?.move.name:null,before:names,after,saved:save.team[0].v32Slots?.length===4};
+  return {count,options:opts.length,chosen:choose?catalogue[Number(choose.dataset.v331Pick)]?.move.name:null,before:names,after,saved:save.team[0].v32Slots?.length===4,feedback:document.getElementById("v331Feedback")?.textContent,slotKey:save.team[0].v32Slots?.[0]||null,button:choose?.outerHTML.slice(0,220)};
  },
  duo(){
   close();startBattle([mon(41,50),mon(52,50),mon(61,50)],"🚀 ROCKET DE KANTO",false);
