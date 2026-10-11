@@ -1,0 +1,26 @@
+name: Pokemon Torre V34 - Smoke Android
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'jogos-html/pokemon-torre-v34/smoke_test.py'
+      - 'jogos-html/pokemon-torre-v34/index.html'
+      - '.github/workflows/pokemon-v34-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Preparar navegador de teste
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Validar V34 no navegador mobile
+        run: python jogos-html/pokemon-torre-v34/smoke_test.py
