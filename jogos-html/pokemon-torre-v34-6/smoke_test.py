@@ -61,6 +61,8 @@ with sync_playwright() as p:
  diag=page.evaluate("window.__346Test.seed()")
  assert diag['version']=='34.6' and all(x in diag['environments'] for x in ['fog','volcano','sun']),diag
  ui=page.evaluate("window.__346Test.editor()")
+ page.wait_for_function("document.querySelector('#modal .v331MoveList')?.getAttribute('data-v346-sorted')==='1'",timeout=5000)
+ ui=page.evaluate("""() => {const list=document.querySelector('#modal .v331MoveList'),buttons=[...list.querySelectorAll('.v331Choice')];return {count:buttons.length,costs:buttons.map(b=>Number(b.querySelector('small')?.textContent.match(/(\\d+)\\s*energia/i)?.[1]||0)),power:buttons.map(b=>Number(b.querySelector('small')?.textContent.match(/(\\d+)\\s*força/i)?.[1]||0)),data:list.getAttribute('data-v346-sorted'),first:buttons[0]?.querySelector('b')?.textContent}}""")
  assert ui.get('data')=='1' and ui['count']>=10,ui
  c,power=ui['costs'],ui['power']
  assert all(c[i]==0 or c[i+1]>0 for i in range(len(c)-1)),ui
