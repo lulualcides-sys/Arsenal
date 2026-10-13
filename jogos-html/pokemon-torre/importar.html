@@ -1,0 +1,29 @@
+<!doctype html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101d2d">
+<title>Importar Progresso · Pokémon Torre</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#0a1525;color:#dbedfa;font:16px system-ui,Arial;min-height:100svh;display:grid;place-items:center}main{width:min(520px,calc(100% - 30px));background:#14283b;border:1px solid #40637c;border-radius:22px;padding:28px}h1{font-size:25px;margin:0 0 18px}p{line-height:1.55;color:#bdcede}button,.button{display:inline-block;cursor:pointer;border:0;background:#ffc773;border-radius:13px;color:#251b18;padding:14px 19px;text-decoration:none;font-weight:800;font-size:16px}a{color:#99ebd9}.secondary{background:#294153;color:#d4edf7}#status{margin-top:14px;min-height:24px;font-size:15px}</style></head><body><main><h1>📥 Transferir seu progresso</h1>
+<p>Esta operação é necessária <strong>somente uma vez</strong> ao sair do arquivo HTML baixado.</p>
+<p><strong>1.</strong> Abra o jogo antigo no celular, entre em <strong>⚙️ Opções → 💾 Baixar backup</strong> e guarde o arquivo JSON.</p>
+<p><strong>2.</strong> Selecione o backup abaixo. O jogo online receberá sua equipe, níveis e capturas.</p>
+<label class="button" for="backup">Selecionar backup JSON</label>
+<input id="backup" type="file" accept=".json,application/json" hidden>
+<div id="status" role="status"></div><p><a href="./" class="button secondary">Voltar para jogar</a></p>
+<p style="font-size:13px">O salvamento fica guardado somente neste navegador. Não envie seus backups para desconhecidos.</p></main>
+<script>
+const input=document.getElementById('backup'),status=document.getElementById('status');
+input.addEventListener('change',async()=>{
+const file=input.files?.[0];if(!file)return;
+try{
+ if(file.size>2000000)throw Error('Arquivo maior que o esperado para um salvamento.');
+ const raw=JSON.parse(await file.text());
+ const s=raw?.save&&Array.isArray(raw.save.team)?raw.save:raw;
+ if(!s||![7,8,9].includes(s.v)||!Array.isArray(s.team)||!Number.isInteger(s.gym)||s.gym<0||s.gym>13)throw Error('Formato do backup inválido.');
+ if(!s.team.every(m=>m&&Number.isInteger(m.id)&&m.id>=1&&m.id<=151&&Number.isInteger(m.level)&&m.level>=1&&m.level<=100))throw Error('Pokémon com dados inválidos.');
+ if(!confirm('Transferir o backup selecionado para este navegador? Isso substituirá o salvamento online anterior.'))return;
+ localStorage.setItem('pokeTorreKantoV14',JSON.stringify(s));
+ localStorage.setItem('pokeTorreKantoV29Backup',JSON.stringify({time:Date.now(),save:s}));
+ status.textContent='✅ Progresso importado! Abrindo o jogo…';location.replace('./');
+}catch(err){status.textContent='❌ Não foi possível importar: '+(err.message||String(err));}
+finally{input.value='';}
+});
+</script></body></html>
