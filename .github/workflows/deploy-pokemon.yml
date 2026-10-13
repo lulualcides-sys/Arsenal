@@ -1,0 +1,32 @@
+name: Publicar Pokémon Torre no GitHub Pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'jogos-html/pokemon-torre/**'
+      - '.github/workflows/deploy-pokemon.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Enviar arquivos do jogo
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./jogos-html/pokemon-torre
+      - id: deployment
+        name: Publicar jogo
+        uses: actions/deploy-pages@v4
