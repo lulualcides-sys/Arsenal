@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101d2d">
+<title>Pokémon Torre · Jogar Online</title>
+<style>*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 40% 20%,#16334b,#081321 72%);color:#d7eaf5;font:16px system-ui,Arial,sans-serif;min-height:100svh;display:grid;place-items:center}main{text-align:center;max-width:440px;padding:28px}.logo{font-size:32px;font-weight:800;letter-spacing:.03em}.tag{color:#84ebd0;font-size:13px;letter-spacing:.16em;font-weight:800}.loader{margin:26px auto 18px;width:56px;height:56px;border:4px solid #355165;border-top-color:#80f5c7;border-radius:100%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}#status{color:#adc9d8;line-height:1.6}.err{color:#ffb6b6}a{color:#8df7d9}</style>
+</head><body><main id="loading"><div class="tag">POKÉMON · TORRE DE BATALHAS</div><div class="logo">POKÉMON TORRE</div><div class="loader" aria-hidden="true"></div><p id="status" role="status">Carregando o jogo online…</p><p style="font-size:13px"><a href="importar.html">Importar progresso do jogo anterior</a></p></main>
+<script>
+(async function(){
+  const TOTAL=31,version='35.79';
+  const status=document.getElementById('status');
+  const files=Array.from({length:TOTAL},(_,i)=>'partes/parte-'+String(i).padStart(3,'0')+'.txt');
+  try{
+    let loaded=0; const chunks=new Array(TOTAL);
+    for(let i=0;i<TOTAL;i+=6){
+      const pack=files.slice(i,i+6);
+      const values=await Promise.all(pack.map(async (name)=>{
+        const r=await fetch(name+'?v='+version,{cache:'no-cache'});
+        if(!r.ok)throw new Error('Arquivo do jogo indisponível ('+name+': '+r.status+')');
+        const value=await r.text();loaded++;status.textContent='Carregando o jogo… '+Math.round(100*loaded/TOTAL)+'%';return value;
+      }));
+      values.forEach((v,j)=>chunks[i+j]=v);
+    }
+    const game=chunks.join('');
+    if(!game.startsWith('<!doctype html>')||!game.endsWith('</body></html>'))throw new Error('Download incompleto. Atualize a página.');
+    document.open();document.write(game);document.close();
+  }catch(error){status.className='err';status.textContent='Não foi possível carregar o jogo: '+(error.message||error)+'. Confira sua conexão e tente atualizar.';document.querySelector('.loader')?.remove();}
+})();
+</script></body></html>
