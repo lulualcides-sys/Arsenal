@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## Nova ferramenta catalogada — 14/10/2026
+
+- **[OmniRoute — gateway de IA com fallback, múltiplos provedores e APIs](ferramentas/OMNIROUTE.md)** ([projeto oficial](https://github.com/diegosouzapw/OmniRoute)): referência para NEXUS, WildVox e desenvolvimento do Pokémon Torre. **Catalogada; não instalada nos projetos nem no PC.**
+
 ## Seções
 
 | Caminho | O que você encontra |
