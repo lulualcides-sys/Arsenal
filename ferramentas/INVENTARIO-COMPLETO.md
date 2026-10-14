@@ -241,3 +241,11 @@ Essa seleção passou por checagem individual da existência do repositório Git
 [Relatório da pesquisa](PESQUISA-GITHUB-2026-10-10.md) · [Motores e bibliotecas vinculados](../fontes/README.md)
 
 A lista original inclui também ideias de produtos, serviços sem código e programas mencionados em prints; registrar referência não é garantir viabilidade técnica ou uso ilimitado.
+
+## Inclusões posteriores à varredura de 10/10/2026
+
+| Nº acumulado | Projeto | Situação no Arsenal | Área | Uso sugerido |
+|---:|---|---|---|---|
+| 205 | [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute) | [Referência técnica catalogada](OMNIROUTE.md) (não instalado) | Dev/IA, NEXUS, WildVox, Pokémon Torre | Gateway multi-LLM com fallback, controle de cotas e MCP/A2A; testar em ambiente isolado |
+
+**Total documentado até 14/10/2026: 205 repositórios únicos (204 históricos + OmniRoute).** Os 32 submódulos históricos permanecem inalterados. Esta inclusão não significa instalação ou integração em produção.
