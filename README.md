@@ -20,6 +20,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 - **[OmniRoute — gateway de IA com fallback, múltiplos provedores e APIs](ferramentas/OMNIROUTE.md)** ([projeto oficial](https://github.com/diegosouzapw/OmniRoute)): referência para NEXUS, WildVox e desenvolvimento do Pokémon Torre. **Catalogada; não instalada nos projetos nem no PC.**
 
+## Nova auditoria de animações — 22/10/2026
+
+**[Emerald Arena v0.13.0 → matriz para Pokémon Torre 2](docs/EMERALD-ARENA-AUDITORIA-TORRE-2-2026-10-22.md)**: estudo do site, 89 perfis de movimentos, captura, Pokébolas, troca, efeitos de terreno e prioridades de implementação com regras de licença. O repositório **já estava** em [`fontes/emerald-arena`](fontes/emerald-arena) e o submódulo aponta para o mesmo commit `e1502f9` da origem, portanto não criamos cópia duplicada. Documentação de estudo, sem alterar golpes aprovados no Torre 2.
+
 ## Seções
 
 | Caminho | O que você encontra |
