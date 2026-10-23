@@ -13,6 +13,12 @@
 
 O arquivo `LICENSE` declara MIT **apenas para código novo de arena, instalador e ferramentas**. Não relicencia `pret/pokeemerald`, sprites Pokémon nem arte de colaboradores. `CREDITS.md` aponta materiais da **PMDCollab/SpriteCollab**, cenários de **Oswarlin**, contribuições de **Didier Lopes**, e partículas Kenney CC0. Examinar licença **por ativo** antes de copiar; conservar avisos/atribuição MIT ao portar código. **Não trazer ROM ou patches comerciais para o Arsenal**. Código C exige portar para Phaser/WebGL; colar o módulo no browser não funciona. Os sprites PMD já têm fontes próprias no Torre 2; não duplicar.
 
+## Preferência de reaproveitamento — decisão do projeto
+
+O responsável pelo Pokémon Torre 2 confirmou que pretende usar o Emerald Arena como referência direta e **reaproveitar tudo que seja possível**, em um projeto não comercial. Informou também que o autor disponibilizou o material para utilização. Para as próximas alterações, preferir portar ou reutilizar, com fidelidade, **código original efetivamente licenciado/autorizado**, em vez de fazer imitações desnecessárias. O código novo da arena sob MIT permite copiar, modificar e distribuir **preservando o aviso e a licença**.
+
+A autorização do criador cobre somente o que ele pode licenciar; o próprio `LICENSE` limita o MIT ao código novo. Os recursos de PMDCollab, Oswarlin, Nintendo/Game Freak e demais terceiros mantêm os respectivos direitos, mesmo sem fins comerciais. Conferir `CREDITS.md` e licenças por recurso antes da cópia. Quando não houver autorização para determinado ativo, adaptar apenas técnica/funcionamento e usar arte permitida. Conservar o motor Phaser/WebGL e os golpes já aprovados.
+
 ## Acervo técnico realmente identificado
 
 | Família | Código de referência (dentro de `game/overlay/src/`) | Mecânica/visual aproveitável | Adaptação Torre 2 |
