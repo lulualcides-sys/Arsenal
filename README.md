@@ -16,6 +16,15 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## Economia de contexto — Graphiti + Obsidian (30/10/2026)
+
+**[Guia prático: memória de projetos e redução de tokens](ferramentas/GRAPHITI-OBSIDIAN-ECONOMIA-TOKENS.md)** — combina a recuperação seletiva de contexto com documentação persistente:
+
+- **[Graphiti](fontes/ferramentas/graphiti)** ([origem](https://github.com/getzep/graphiti)): **já vinculado** como submódulo Git ao Arsenal. Framework open source para grafos temporais, memória de agentes e busca híbrida; exige infraestrutura e pode consumir tokens na ingestão.
+- **[Obsidian](https://obsidian.md/)** ([releases oficiais](https://github.com/obsidianmd/obsidian-releases)): notas em Markdown e índices de decisões, testes e pendências. **Catalogado como referência**; o aplicativo não é open source, seu código não foi adicionado e nada foi instalado.
+
+> **Economia de tokens não é automática:** enviar ao modelo só notas/trechos relevantes, em vez de históricos completos. Começar com Markdown + busca no GitHub; avaliar Graphiti apenas se a complexidade justificar.
+
 ## Novos projetos dos vídeos — 29/10/2026
 
 **[7 ferramentas open source verificadas e pesquisa RTX 2060](ferramentas/VIDEOS-OPEN-SOURCE-RTX2060-2026-10-29.md)** — GPU Unlock, Win11Debloat, CleanYourTV, SmartTube, UAD-ng, ReVanced Manager e Pi-hole; extras Turing Unlock (RTX 2060 experimental) e OptiScaler (jogos offline). Inclui fontes oficiais, licenças, riscos e resultados efetivamente documentados. **Apenas referências catalogadas: nenhuma instalação ou alteração no PC/projetos.**
