@@ -20,6 +20,21 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 **[7 ferramentas open source verificadas e pesquisa RTX 2060](ferramentas/VIDEOS-OPEN-SOURCE-RTX2060-2026-10-29.md)** — GPU Unlock, Win11Debloat, CleanYourTV, SmartTube, UAD-ng, ReVanced Manager e Pi-hole; extras Turing Unlock (RTX 2060 experimental) e OptiScaler (jogos offline). Inclui fontes oficiais, licenças, riscos e resultados efetivamente documentados. **Apenas referências catalogadas: nenhuma instalação ou alteração no PC/projetos.**
 
+## Kits de desenvolvimento com IA — Superpowers e Spec Kit
+
+Os dois projetos **já estão vinculados ao Arsenal como submódulos Git** (versões fixadas, sem duplicar o código). Eles também constam do [inventário completo](ferramentas/INVENTARIO-COMPLETO.md):
+
+- **[Superpowers — obra/superpowers](fontes/ferramentas/superpowers)** ([origem oficial](https://github.com/obra/superpowers)): conjunto de habilidades e metodologia para agentes de desenvolvimento, com planejamento, depuração sistemática, testes antes da implementação e revisão de código. Referência Git fixada em `bb92a777`.
+- **[Spec Kit — github/spec-kit](fontes/ferramentas/spec-kit)** ([origem oficial](https://github.com/github/spec-kit)): kit de desenvolvimento orientado por especificações (SDD), planejamento, tarefas verificáveis e fluxos de correção. Referência Git fixada em `04437605`.
+
+Para baixar **somente esses dois submódulos** em um clone existente do Arsenal:
+
+```bash
+git submodule update --init fontes/ferramentas/superpowers fontes/ferramentas/spec-kit
+```
+
+> **Estado real:** vinculados ao repositório; isso **não** significa que os plugins ou comandos foram instalados no computador, no ChatGPT ou nos projetos. Os submódulos permanecem fixados nos commits registrados no Arsenal; atualizar para versões novas exige revisão de compatibilidade.
+
 ## Nova ferramenta catalogada — 14/10/2026
 
 - **[OmniRoute — gateway de IA com fallback, múltiplos provedores e APIs](ferramentas/OMNIROUTE.md)** ([projeto oficial](https://github.com/diegosouzapw/OmniRoute)): referência para NEXUS, WildVox e desenvolvimento do Pokémon Torre. **Catalogada; não instalada nos projetos nem no PC.**
