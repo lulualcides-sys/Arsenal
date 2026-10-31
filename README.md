@@ -18,7 +18,7 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 ## FindSkills — pesquisa de skills para Pokémon Torre 2 (30/10/2026)
 
-**[FindSkills.org](https://www.findskills.org/)** e **[Find Skills (Vercel)](https://www.skills.sh/vercel-labs/skills/find-skills)** são serviços/projetos distintos para descobrir habilidades de agentes. **[Análise de compatibilidade com o Pokémon Torre 2](ferramentas/FINDSKILLS-POKEMON-TORRE-2-2026-10-30.md)**: Phaser na campanha, PixiJS 7.4.3 no laboratório antigo; prioridades: Playwright, diagnóstico de desempenho e boas práticas Phaser. **Apenas referências catalogadas** — nenhuma instalação, CI ou jogo alterado.
+**[FindSkills.org](https://www.findskills.org/)** e **[Find Skills (Vercel)](https://www.skills.sh/vercel-labs/skills/find-skills)** são serviços/projetos distintos para descobrir habilidades de agentes. **[Análise de compatibilidade com o Pokémon Torre 2](ferramentas/FINDSKILLS-POKEMON-TORRE-2-2026-10-30.md)**: Phaser na campanha, PixiJS 7.4.3 no laboratório antigo; prioridades: Playwright, diagnóstico de desempenho e boas práticas Phaser. **Quatro skills instaladas como instruções no Pokémon Torre 2** via [PR #383](https://github.com/lulualcides-sys/Pok-mon-torre-2/pull/383), com referências e licenças. Nenhum executável npm/CLI foi instalado no PC; código de jogo preservado.
 
 ## Economia de contexto — Graphiti + Obsidian (30/10/2026)
 
