@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## Vibe Coding Toolkit — regras de qualidade e refatoração segura (31/10/2026)
+
+**[Análise técnica e plano de adoção para Pokémon Torre 2](ferramentas/VIBE-CODING-TOOLKIT-POKEMON-TORRE-2-2026-10-31.md)** — [Vibe Coding Toolkit de Matheus Gomes](https://github.com/soumatheusgomes/vibe-coding-toolkit) (MIT): prompts 08 (ESLint quality gates), 09 (refatoração de arquivos extensos) e 02 (redução de warnings). Foi constatado que o Pokémon Torre 2 tem scripts de testes e verificações, mas não um `lint` declarado no `package.json`. **Catalogado como referência e plano; nenhum código de jogo alterado, dependência instalada ou refatoração executada.** Adotar em branch isolada e com regressão de Phaser/Chromium antes de mesclar.
+
 ## FindSkills — pesquisa de skills para Pokémon Torre 2 (30/10/2026)
 
 **[FindSkills.org](https://www.findskills.org/)** e **[Find Skills (Vercel)](https://www.skills.sh/vercel-labs/skills/find-skills)** são serviços/projetos distintos para descobrir habilidades de agentes. **[Análise de compatibilidade com o Pokémon Torre 2](ferramentas/FINDSKILLS-POKEMON-TORRE-2-2026-10-30.md)**: Phaser na campanha, PixiJS 7.4.3 no laboratório antigo; prioridades: Playwright, diagnóstico de desempenho e boas práticas Phaser. **Quatro skills instaladas como instruções no Pokémon Torre 2** via [PR #383](https://github.com/lulualcides-sys/Pok-mon-torre-2/pull/383), com referências e licenças. Nenhum executável npm/CLI foi instalado no PC; código de jogo preservado.
