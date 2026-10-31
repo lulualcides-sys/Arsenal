@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## FindSkills — pesquisa de skills para Pokémon Torre 2 (30/10/2026)
+
+**[FindSkills.org](https://www.findskills.org/)** e **[Find Skills (Vercel)](https://www.skills.sh/vercel-labs/skills/find-skills)** são serviços/projetos distintos para descobrir habilidades de agentes. **[Análise de compatibilidade com o Pokémon Torre 2](ferramentas/FINDSKILLS-POKEMON-TORRE-2-2026-10-30.md)**: Phaser na campanha, PixiJS 7.4.3 no laboratório antigo; prioridades: Playwright, diagnóstico de desempenho e boas práticas Phaser. **Apenas referências catalogadas** — nenhuma instalação, CI ou jogo alterado.
+
 ## Economia de contexto — Graphiti + Obsidian (30/10/2026)
 
 **[Guia prático: memória de projetos e redução de tokens](ferramentas/GRAPHITI-OBSIDIAN-ECONOMIA-TOKENS.md)** — combina a recuperação seletiva de contexto com documentação persistente:
