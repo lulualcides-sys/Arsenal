@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## Buscando 1 Milhão — CRM, vendas e leads (31/10/2026)
+
+**[Avaliação comercial e integração para nossos projetos](ferramentas/BUSCANDO-1-MILHAO-2026-10-31.md)** — [Buscando 1 Milhão, de Matheus Gomes](https://github.com/soumatheusgomes/buscandomilhao): prompt para construir um sistema de prospecção e CRM com IA. **Melhor aproveitamento:** qualificação de leads, funis de clientes/afiliados, atendimento com afirmações verificadas, follow-up autorizado, métricas de conversão e controle de custo para **Central de Softwares e Realizações Imóveis**, com uso comercial isolado em NEXUS Score e WildVox. **Não existe software pronto nem faturamento de R$ 1 milhão comprovado pelo repositório.** Referência catalogada, sem instalação ou envios automatizados; licença de reutilização do texto/código não identificada. Evitar prospecção automatizada por DMs não solicitadas, priorizando comunicação consentida e integrações oficiais.
+
 ## Vibe Coding Toolkit — regras de qualidade e refatoração segura (31/10/2026)
 
 **[Análise técnica e plano de adoção para Pokémon Torre 2](ferramentas/VIBE-CODING-TOOLKIT-POKEMON-TORRE-2-2026-10-31.md)** — [Vibe Coding Toolkit de Matheus Gomes](https://github.com/soumatheusgomes/vibe-coding-toolkit) (MIT): prompts 08 (ESLint quality gates), 09 (refatoração de arquivos extensos) e 02 (redução de warnings). Foi constatado que o Pokémon Torre 2 tem scripts de testes e verificações, mas não um `lint` declarado no `package.json`. **Catalogado como referência e plano; nenhum código de jogo alterado, dependência instalada ou refatoração executada.** Adotar em branch isolada e com regressão de Phaser/Chromium antes de mesclar.
