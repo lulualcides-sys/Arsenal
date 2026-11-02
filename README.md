@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## 10 novas ferramentas de IA e automação — 01/11/2026
+
+**[Catálogo verificado: HyperFrames, Camofox, Agentic Inbox, Claude Ads, Open-LLM-VTuber, Open Generative AI (antigo Higgsfield), LibreChat, Fincept Terminal, Vibe-Trading e AutoHedge](ferramentas/IA-OPEN-SOURCE-10-FERRAMENTAS-2026-11-01.md)** — 10 projetos com repositórios oficiais, usos possíveis em **WildVox, Realizações Imóveis, Central de Softwares e Nexus Quant**, prioridades, licenças e alertas sobre preços, antidetecção, proteção de dados e riscos de trading. **Apenas catalogados; nada instalado, executado ou conectado a dinheiro real.**
+
 ## Buscando 1 Milhão — CRM, vendas e leads (31/10/2026)
 
 **[Avaliação comercial e integração para nossos projetos](ferramentas/BUSCANDO-1-MILHAO-2026-10-31.md)** — [Buscando 1 Milhão, de Matheus Gomes](https://github.com/soumatheusgomes/buscandomilhao): prompt para construir um sistema de prospecção e CRM com IA. **Melhor aproveitamento:** qualificação de leads, funis de clientes/afiliados, atendimento com afirmações verificadas, follow-up autorizado, métricas de conversão e controle de custo para **Central de Softwares e Realizações Imóveis**, com uso comercial isolado em NEXUS Score e WildVox. **Não existe software pronto nem faturamento de R$ 1 milhão comprovado pelo repositório.** Referência catalogada, sem instalação ou envios automatizados; licença de reutilização do texto/código não identificada. Evitar prospecção automatizada por DMs não solicitadas, priorizando comunicação consentida e integrações oficiais.
