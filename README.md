@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## 7 ferramentas de Pixel Art, UI e validação Phaser — 04/11/2026
+
+**[Pixelorama, Phaser Editor v5, Tiled, Gridvana, PixelDust, Playwright e LibreSprite](ferramentas/PIXELART-UI-PHASER-7-FERRAMENTAS-2026-11-04.md)** — roteiro de integração para o **Pokémon Torre 2**: spritesheets dos 18 golpes, mapas em camadas, UI sem sobreposições e comparação de screenshots do Phaser real com aprovação visual obrigatória. **Sete referências catalogadas; não significa instalação ou mudança de gameplay/publicação.** Prioridade inicial: Pixelorama + Tiled + Playwright; editor comercial apenas se o piloto gratuito for insuficiente.
+
 ## 10 novas ferramentas de IA e automação — 01/11/2026
 
 **[Catálogo verificado: HyperFrames, Camofox, Agentic Inbox, Claude Ads, Open-LLM-VTuber, Open Generative AI (antigo Higgsfield), LibreChat, Fincept Terminal, Vibe-Trading e AutoHedge](ferramentas/IA-OPEN-SOURCE-10-FERRAMENTAS-2026-11-01.md)** — 10 projetos com repositórios oficiais, usos possíveis em **WildVox, Realizações Imóveis, Central de Softwares e Nexus Quant**, prioridades, licenças e alertas sobre preços, antidetecção, proteção de dados e riscos de trading. **Apenas catalogados; nada instalado, executado ou conectado a dinheiro real.**
