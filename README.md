@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## Colibri — IA local sem GPU obrigatória (05/11/2026)
+
+**[Colibri: motor de IA local, streaming de especialistas MoE e servidor compatível com APIs](ferramentas/COLIBRI-IA-LOCAL-2026-11-05.md)** — [projeto original JustVugg/colibri](https://github.com/JustVugg/colibri) (Apache 2.0 para o motor). **Apenas catalogado:** não foi instalado nem integrado ao Pokémon Torre 2, WildVox ou NEXUS. A inferência local pode poupar chamadas externas, mas modelos enormes podem ser extremamente lentos e consumir centenas de GB de SSD. Recomendação: iniciar um piloto com modelo menor, medindo velocidade, qualidade e custo real.
+
 ## 7 ferramentas de Pixel Art, UI e validação Phaser — 04/11/2026
 
 **[Pixelorama, Phaser Editor v5, Tiled, Gridvana, PixelDust, Playwright e LibreSprite](ferramentas/PIXELART-UI-PHASER-7-FERRAMENTAS-2026-11-04.md)** — roteiro de integração para o **Pokémon Torre 2**: spritesheets dos 18 golpes, mapas em camadas, UI sem sobreposições e comparação de screenshots do Phaser real com aprovação visual obrigatória. **Sete referências catalogadas; não significa instalação ou mudança de gameplay/publicação.** Prioridade inicial: Pixelorama + Tiled + Playwright; editor comercial apenas se o piloto gratuito for insuficiente.
