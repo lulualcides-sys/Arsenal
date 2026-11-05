@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## 5 skills de IA do ranking — 05/11/2026
+
+**[grilling, HyperFrames, find-skills, agent-browser e design-taste-frontend](ferramentas/TOP-5-SKILLS-IA-2026-11-05.md)** — fontes oficiais, licenças, prioridades por projeto e cuidados de adoção. **Três referências novas:** grilling, agent-browser e design-taste-frontend. **Duas já catalogadas:** HyperFrames e find-skills, vinculadas aos registros existentes, sem duplicação. Prioridades: **agent-browser** para validação de interfaces do Pokémon Torre 2; **HyperFrames** para vídeo WildVox; **grilling** para planejamento crítico ATLAS/NEXUS. **Somente catalogado**, nenhuma instalação ou alteração operacional.
+
 ## The Agency — agentes especialistas para Codex, Cursor e Claude Code (05/11/2026)
 
 **[The Agency / Agency Agents — análise técnica e roteiro de adoção seletiva](ferramentas/THE-AGENCY-AGENTS-2026-11-05.md)** — biblioteca open source [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents), licença MIT, com perfis de engenharia, testes, jogos, segurança e marketing. **Prioridade de piloto: Pokémon Torre 2**, com Code Reviewer, Minimal Change Engineer e Test Automation Engineer, em branch isolada e com testes de regressão. **Apenas catalogado:** os agentes não foram instalados, não existem alterações no jogo, no WildVox ou no ATLAS/NEXUS; uso das plataformas de IA ainda pode ter custos e limites próprios.
