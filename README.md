@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## The Agency — agentes especialistas para Codex, Cursor e Claude Code (05/11/2026)
+
+**[The Agency / Agency Agents — análise técnica e roteiro de adoção seletiva](ferramentas/THE-AGENCY-AGENTS-2026-11-05.md)** — biblioteca open source [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents), licença MIT, com perfis de engenharia, testes, jogos, segurança e marketing. **Prioridade de piloto: Pokémon Torre 2**, com Code Reviewer, Minimal Change Engineer e Test Automation Engineer, em branch isolada e com testes de regressão. **Apenas catalogado:** os agentes não foram instalados, não existem alterações no jogo, no WildVox ou no ATLAS/NEXUS; uso das plataformas de IA ainda pode ter custos e limites próprios.
+
 ## Colibri — IA local sem GPU obrigatória (05/11/2026)
 
 **[Colibri: motor de IA local, streaming de especialistas MoE e servidor compatível com APIs](ferramentas/COLIBRI-IA-LOCAL-2026-11-05.md)** — [projeto original JustVugg/colibri](https://github.com/JustVugg/colibri) (Apache 2.0 para o motor). **Apenas catalogado:** não foi instalado nem integrado ao Pokémon Torre 2, WildVox ou NEXUS. A inferência local pode poupar chamadas externas, mas modelos enormes podem ser extremamente lentos e consumir centenas de GB de SSD. Recomendação: iniciar um piloto com modelo menor, medindo velocidade, qualidade e custo real.
