@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## GitHub Trending — 10 projetos da captura de 04/11/2026
+
+**[Catálogo verificado com os 10 projetos da imagem](ferramentas/GITHUB-TRENDING-10-PROJETOS-2026-11-04.md)** — agent-desktop, auto-ontology, Scrapling, DiscImageStudio, skills, claude-mem, floci, spec-kit, MoneyPrinterTurbo e worktrunk. Inclui fontes oficiais, licenças, usos por projeto, riscos e prioridades. **Sem instalação nem integração.** Spec Kit e mattpocock/skills já estavam catalogados; não foram duplicados.
+
 ## 5 skills de IA do ranking — 05/11/2026
 
 **[grilling, HyperFrames, find-skills, agent-browser e design-taste-frontend](ferramentas/TOP-5-SKILLS-IA-2026-11-05.md)** — fontes oficiais, licenças, prioridades por projeto e cuidados de adoção. **Três referências novas:** grilling, agent-browser e design-taste-frontend. **Duas já catalogadas:** HyperFrames e find-skills, vinculadas aos registros existentes, sem duplicação. Prioridades: **agent-browser** para validação de interfaces do Pokémon Torre 2; **HyperFrames** para vídeo WildVox; **grilling** para planejamento crítico ATLAS/NEXUS. **Somente catalogado**, nenhuma instalação ou alteração operacional.
