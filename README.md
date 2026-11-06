@@ -20,6 +20,8 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 **[Catálogo verificado com os 10 projetos da imagem](ferramentas/GITHUB-TRENDING-10-PROJETOS-2026-11-04.md)** — agent-desktop, auto-ontology, Scrapling, DiscImageStudio, skills, claude-mem, floci, spec-kit, MoneyPrinterTurbo e worktrunk. Inclui fontes oficiais, licenças, usos por projeto, riscos e prioridades. **Sem instalação nem integração.** Spec Kit e mattpocock/skills já estavam catalogados; não foram duplicados.
 
+**[Avaliação de integração e testes (06/11/2026)](ferramentas/INTEGRACOES-TESTES-GITHUB-TRENDING-2026-11-06.md)** — WildVox com piloto opcional MoneyPrinterTurbo aprovado em 81 testes; Pokémon Torre 2 com Worktrunk opcional e 481 testes unitários, aguardando verificações finais de navegador. Os demais projetos foram avaliados sem novas dependências. Testes não comprovam melhora de vídeo, FPS ou lucratividade.
+
 ## 5 skills de IA do ranking — 05/11/2026
 
 **[grilling, HyperFrames, find-skills, agent-browser e design-taste-frontend](ferramentas/TOP-5-SKILLS-IA-2026-11-05.md)** — fontes oficiais, licenças, prioridades por projeto e cuidados de adoção. **Três referências novas:** grilling, agent-browser e design-taste-frontend. **Duas já catalogadas:** HyperFrames e find-skills, vinculadas aos registros existentes, sem duplicação. Prioridades: **agent-browser** para validação de interfaces do Pokémon Torre 2; **HyperFrames** para vídeo WildVox; **grilling** para planejamento crítico ATLAS/NEXUS. **Somente catalogado**, nenhuma instalação ou alteração operacional.
