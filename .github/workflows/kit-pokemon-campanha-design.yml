@@ -1,0 +1,37 @@
+name: Arsenal — kit design da campanha (somente CI)
+
+on:
+  pull_request:
+    paths:
+      - '.gitmodules'
+      - 'fontes/ferramentas/gamedev-agent-skills'
+      - 'fontes/ferramentas/svg-js'
+      - 'toolkits/pokemon-campanha-design/**'
+      - 'prompts/GOAL-CAMPANHA-PIXELART-PREMIUM-2026-11-07.md'
+      - '.github/workflows/kit-pokemon-campanha-design.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verificar-fontes-e-kit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          submodules: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Inicializar somente os dois submodulos novos
+        run: |
+          set -euo pipefail
+          git -c protocol.file.allow=never submodule update --init fontes/ferramentas/gamedev-agent-skills fontes/ferramentas/svg-js
+          git submodule status fontes/ferramentas/gamedev-agent-skills fontes/ferramentas/svg-js
+      - name: Instalar SVG.js isoladamente no runner de CI
+        run: npm install --prefix toolkits/pokemon-campanha-design --no-audit --no-fund --no-package-lock --ignore-scripts
+      - name: Conferir fontes e protecoes do goal
+        run: node toolkits/pokemon-campanha-design/verify.mjs
