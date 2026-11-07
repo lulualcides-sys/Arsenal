@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## Kit de design para a campanha do Pokémon Torre 2 — 07/11/2026
+
+**[Prompt /goal do redesign visual completo](prompts/GOAL-CAMPANHA-PIXELART-PREMIUM-2026-11-07.md)** · **[Instalação selecionada e testes do kit](toolkits/pokemon-campanha-design/README.md)**. Reutiliza Pixelorama, Tiled, LibreSprite, Spec Kit e Playwright já vinculados; vincula separadamente as skills de game design e SVG.js. SVG.js 3.2.8 é instalado apenas no ambiente isolado de CI/prototipagem, não no runtime do jogo. **Nenhuma alteração de batalha, Arena, saves, VFX ou publicação no Pokémon Torre 2.**
+
 ## Awesome GameDev Agent Skills — 07/11/2026
 
 **[Coleção de 77 skills + roteador para agentes de desenvolvimento de jogos](ferramentas/AWESOME-GAMEDEV-AGENT-SKILLS-2026-11-07.md)** — [fonte oficial gamedev-skills/awesome-gamedev-agent-skills](https://github.com/gamedev-skills/awesome-gamedev-agent-skills) (Apache-2.0). Curadoria para **Pokémon Torre 2** com prioridade em `create-game-assets`, `game-ui-ux`, `level-design` e testes de performance. Inclui cuidado com Phaser/PixiJS, histórico aprovado e instruções externas. **Referência apenas, sem instalação nem alteração no jogo.**
