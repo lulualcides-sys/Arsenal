@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## Awesome GameDev Agent Skills — 07/11/2026
+
+**[Coleção de 77 skills + roteador para agentes de desenvolvimento de jogos](ferramentas/AWESOME-GAMEDEV-AGENT-SKILLS-2026-11-07.md)** — [fonte oficial gamedev-skills/awesome-gamedev-agent-skills](https://github.com/gamedev-skills/awesome-gamedev-agent-skills) (Apache-2.0). Curadoria para **Pokémon Torre 2** com prioridade em `create-game-assets`, `game-ui-ux`, `level-design` e testes de performance. Inclui cuidado com Phaser/PixiJS, histórico aprovado e instruções externas. **Referência apenas, sem instalação nem alteração no jogo.**
+
 ## 10 ferramentas de animação, VFX e composição — 06/11/2026
 
 **[Friction, FreeMoCap, Effekseer, Theatre.js, OpenToonz, OpenVDB, Natron, Synfig Studio, SVG.js e Pencil2D](ferramentas/ANIMACAO-VFX-10-FERRAMENTAS-2026-11-06.md)** — dez repositórios oficiais conferidos, licenças, compatibilidade, riscos e testes sugeridos. Prioridades: **Effekseer** como laboratório isolado de VFX para Pokémon Torre 2; **SVG.js + Friction** para animações narrativas no WildVox. **Apenas catalogados:** nada instalado ou incorporado aos jogos, vídeos ou robôs.
