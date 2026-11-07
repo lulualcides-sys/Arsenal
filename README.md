@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## 10 ferramentas de animação, VFX e composição — 06/11/2026
+
+**[Friction, FreeMoCap, Effekseer, Theatre.js, OpenToonz, OpenVDB, Natron, Synfig Studio, SVG.js e Pencil2D](ferramentas/ANIMACAO-VFX-10-FERRAMENTAS-2026-11-06.md)** — dez repositórios oficiais conferidos, licenças, compatibilidade, riscos e testes sugeridos. Prioridades: **Effekseer** como laboratório isolado de VFX para Pokémon Torre 2; **SVG.js + Friction** para animações narrativas no WildVox. **Apenas catalogados:** nada instalado ou incorporado aos jogos, vídeos ou robôs.
+
 ## GitHub Trending — 10 projetos da captura de 04/11/2026
 
 **[Catálogo verificado com os 10 projetos da imagem](ferramentas/GITHUB-TRENDING-10-PROJETOS-2026-11-04.md)** — agent-desktop, auto-ontology, Scrapling, DiscImageStudio, skills, claude-mem, floci, spec-kit, MoneyPrinterTurbo e worktrunk. Inclui fontes oficiais, licenças, usos por projeto, riscos e prioridades. **Sem instalação nem integração.** Spec Kit e mattpocock/skills já estavam catalogados; não foram duplicados.
