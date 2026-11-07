@@ -1,0 +1,13 @@
+{
+  "name": "pokemon-campanha-design-toolkit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Prototipagem SVG externa ao jogo; nunca incluir no runtime Phaser",
+  "scripts": {
+    "verify": "node verify.mjs"
+  },
+  "dependencies": {
+    "@svgdotjs/svg.js": "3.2.8"
+  }
+}

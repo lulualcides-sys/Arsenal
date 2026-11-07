@@ -94,3 +94,11 @@
 [submodule "fontes/ferramentas/howler-js"]
 	path = fontes/ferramentas/howler-js
 	url = https://github.com/goldfire/howler.js.git
+
+[submodule "fontes/ferramentas/gamedev-agent-skills"]
+	path = fontes/ferramentas/gamedev-agent-skills
+	url = https://github.com/gamedev-skills/awesome-gamedev-agent-skills.git
+
+[submodule "fontes/ferramentas/svg-js"]
+	path = fontes/ferramentas/svg-js
+	url = https://github.com/svgdotjs/svg.js.git
