@@ -16,6 +16,10 @@ Acervo central de desenvolvimento dos projetos **Pokémon Torre**, **NEXUS Score
 
 > **Jogo atualizado:** [Pokémon Torre Arena V11 Animada](jogos-html/Pokemon_Torre_Arena_V11_Animada.html) — spritesheets Idle/Walk/Attack/Hurt a 8 FPS e [guia dos PNGs](jogos-html/SPRITES_V11_GUIA.md). Não substitui a engine nativa GBA.
 
+## MiroFish — simulador multiagente de cenários (08/11/2026)
+
+**[MiroFish — catálogo, requisitos, aplicações e cautelas](ferramentas/MIROFISH-SIMULACAO-MULTIAGENTE-2026-11-08.md)** — [origem oficial 666ghj/MiroFish](https://github.com/666ghj/MiroFish) (AGPL-3.0). Simula interações de agentes de IA a partir de materiais iniciais; possível piloto para validação de hipóteses de produtos, WildVox e comunicação, **sem tratar saídas como previsões validadas ou sinais de trading**. **Somente catalogado**: não instalado, integrado ou testado; execução pode consumir APIs pagas de LLM e Zep.
+
 ## Kit de design para a campanha do Pokémon Torre 2 — 07/11/2026
 
 **[Prompt /goal do redesign visual completo](prompts/GOAL-CAMPANHA-PIXELART-PREMIUM-2026-11-07.md)** · **[Instalação selecionada e testes do kit](toolkits/pokemon-campanha-design/README.md)**. Reutiliza Pixelorama, Tiled, LibreSprite, Spec Kit e Playwright já vinculados; vincula separadamente as skills de game design e SVG.js. SVG.js 3.2.8 é instalado apenas no ambiente isolado de CI/prototipagem, não no runtime do jogo. **Nenhuma alteração de batalha, Arena, saves, VFX ou publicação no Pokémon Torre 2.**
