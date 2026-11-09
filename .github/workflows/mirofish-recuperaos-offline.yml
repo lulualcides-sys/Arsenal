@@ -1,0 +1,39 @@
+name: RecuperaOS — offline synthetic buyer test
+on:
+  push:
+    branches: [lab/mirofish-recuperaos-20261109]
+    paths:
+      - 'labs/mirofish-recuperaos/offline_buyers.py'
+      - '.github/workflows/mirofish-recuperaos-offline.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify 30 invented personas without network calls
+        run: python3 labs/mirofish-recuperaos/offline_buyers.py --dry-run
+      - name: Prepare Ollama in temporary runner
+        run: |
+          curl -fsSL -o /tmp/ollama_install.sh https://ollama.com/install.sh
+          sh /tmp/ollama_install.sh
+          (ollama serve > /tmp/ollama_serve.log 2>&1 &)
+          for i in $(seq 1 40); do
+            if curl -fsS http://localhost:11434/api/version; then break; fi
+            sleep 2
+          done
+      - name: Download free local model
+        run: ollama pull qwen2.5:1.5b
+      - name: Run fictional buyer exercise
+        run: python3 labs/mirofish-recuperaos/offline_buyers.py --out labs/mirofish-recuperaos/results
+      - name: Print generated report
+        run: cat labs/mirofish-recuperaos/results/report.md
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: recuperaos-synthetic-report
+          path: labs/mirofish-recuperaos/results/
+          retention-days: 7
