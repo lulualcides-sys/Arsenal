@@ -1,0 +1,45 @@
+name: MiroFish RecuperaOS - isolated setup smoke test
+on:
+  push:
+    branches: [lab/mirofish-recuperaos-20261109]
+    paths:
+      - 'labs/mirofish-recuperaos/**'
+      - '.github/workflows/mirofish-recuperaos-lab.yml'
+  pull_request:
+    paths:
+      - 'labs/mirofish-recuperaos/**'
+      - '.github/workflows/mirofish-recuperaos-lab.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  safe-install:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify synthetic experiment (no API calls)
+        run: python3 labs/mirofish-recuperaos/verify_experiment.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: astral-sh/setup-uv@v6
+      - name: Install Python 3.12
+        run: uv python install 3.12
+      - name: Get pinned official MiroFish snapshot
+        run: |
+          git clone --quiet https://github.com/666ghj/MiroFish.git /tmp/mirofish-upstream
+          cd /tmp/mirofish-upstream
+          git checkout --quiet --detach 7657031ac01184afe2cb220f5ee3545573b5e843
+          echo "Upstream SHA: $(git rev-parse HEAD)"
+      - name: Install upstream dependencies without secrets
+        working-directory: /tmp/mirofish-upstream
+        env:
+          UV_PYTHON: '3.12'
+        run: npm run setup:all
+      - name: Frontend build and Python syntax smoke tests
+        working-directory: /tmp/mirofish-upstream
+        run: |
+          npm run build
+          uv run --project backend --python 3.12 python -m compileall -q backend/app
+          echo "PASS: installation and build only; NO LLM/Zep and NO customer simulation."
