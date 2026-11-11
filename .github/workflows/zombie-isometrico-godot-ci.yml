@@ -1,0 +1,42 @@
+name: Zombie Outbreak Godot smoke + web export
+
+on:
+  push:
+    branches: [feat/zombie-isometrico-godot]
+    paths:
+      - 'laboratorios/zombie-isometrico-godot/**'
+      - '.github/workflows/zombie-isometrico-godot-ci.yml'
+  pull_request:
+    paths:
+      - 'laboratorios/zombie-isometrico-godot/**'
+      - '.github/workflows/zombie-isometrico-godot-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  godot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar Godot estavel e templates Web no runner
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.7.2
+          use-dotnet: false
+          include-templates: true
+      - name: Importar projeto e verificar GDScript
+        run: godot --headless --editor --path laboratorios/zombie-isometrico-godot --import --quit
+      - name: Smoke test da cena principal
+        run: godot --headless --path laboratorios/zombie-isometrico-godot --script res://tests/smoke.gd
+      - name: Exportar demo HTML5
+        run: |
+          mkdir -p laboratorios/zombie-isometrico-godot/build
+          godot --headless --path laboratorios/zombie-isometrico-godot --export-release "Web" build/index.html
+      - uses: actions/upload-artifact@v4
+        with:
+          name: zombie-outbreak-web-prototype
+          path: laboratorios/zombie-isometrico-godot/build/
+          if-no-files-found: error
