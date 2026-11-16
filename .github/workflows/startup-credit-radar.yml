@@ -1,0 +1,42 @@
+name: Radar de créditos para startups
+on:
+  schedule:
+    - cron: '0 11 * * *' # 08h em America/Sao_Paulo, UTC-03
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+jobs:
+  official-source-monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit tests
+        run: python -m unittest discover -s toolkits/startup-credits -p 'test_*.py'
+      - name: Conferir páginas oficiais
+        id: scan
+        run: python toolkits/startup-credits/monitor.py
+      - name: Resumo da checagem
+        if: always()
+        shell: bash
+        run: |
+          if [ -f credit-report.md ]; then cat credit-report.md >> "$GITHUB_STEP_SUMMARY"; fi
+      - name: Atualizar estado público sem dados empresariais
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add toolkits/startup-credits/state.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: atualizar estado das fontes oficiais de créditos'
+            git push
+          fi
+      - name: Abrir alerta para revisão humana
+        if: steps.scan.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --title "Radar: verificar alteração em programa de créditos" --body-file credit-report.md
