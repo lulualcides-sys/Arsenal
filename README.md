@@ -1,5 +1,9 @@
 # ARSENAL — Biblioteca de código, ferramentas e pesquisas
 
+## AutoClip e Postiz — Nexus Clips BR (16/11/2026)
+
+**[Curadoria técnica: AutoClip (MIT) + Postiz (AGPL-3.0)](ferramentas/AUTOCLIP-POSTIZ-NEXUS-CLIPS-2026-11-16.md)** — edição local de clipes e agendamento/publicação social como opções para o projeto GTA-6-clips do Astra. **Catalogados, sem instalação ou integração**; piloto isolado, direitos, testes, comparação com o editor e a fila existentes e controle de custos são obrigatórios.
+
 ## Ferramenta principal recuperada: REA
 
 **[REA — Reverse Engineer Anything](fontes/rea)** ([repositório original](https://github.com/morluto/rea)) é nosso principal kit de estudo de software e engenharia reversa. Seu código completo está ligado ao Arsenal como submódulo Git fixado em commit, ao lado do [Emerald Arena](fontes/emerald-arena).
