@@ -15,13 +15,14 @@ ROOT = Path(__file__).resolve().parent
 STATE = ROOT / "state.json"
 REPORT = ROOT / "latest-report.md"
 SOURCES = [
-    ("AWS Activate", "https://aws.amazon.com/startups/credits/"),
-    ("Google for Startups Cloud", "https://cloud.google.com/startup"),
-    ("Cloudflare for Startups", "https://www.cloudflare.com/startups/"),
-    ("Microsoft for Startups", "https://startups.microsoft.com/"),
-    ("GitHub for Startups", "https://github.com/enterprise/startups"),
-    ("Oracle for Startups", "https://www.oracle.com/startup/"),
-    ("NVIDIA Inception", "https://www.nvidia.com/en-us/startups/"),
+    # Contas individuais, sem exigir CNPJ. Cada benefício depende de elegibilidade individual.
+    ("AWS Free Tier", "https://aws.amazon.com/free/free-tier-faqs/"),
+    ("Google Cloud Free", "https://cloud.google.com/free"),
+    ("Google Cloud Free Trial FAQ", "https://cloud.google.com/signup-faqs?hl=pt-BR"),
+    ("Oracle Cloud Free Tier Brasil", "https://www.oracle.com/br/cloud/free/faq/"),
+    ("Azure Free Account", "https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account"),
+    ("Cloudflare Workers Free", "https://developers.cloudflare.com/workers/platform/limits/"),
+    ("GitHub Student Developer Pack", "https://docs.github.com/pt/education/about-github-education/github-education-for-students/github-terms-and-conditions-for-the-student-developer-pack"),
 ]
 class Text(HTMLParser):
     def __init__(self):
@@ -70,7 +71,7 @@ def main():
              "## Alterações para verificar", *(events or ["Nenhuma mudança textual detectada nas fontes acessíveis."]), "",
              "## Fontes", "| Programa | Status de acesso | URL |", "|---|---|---|"]
     lines += [f"| {e['name']} | {e['status']} | {e['url']} |" for e in records.values()]
-    lines += ["", "## Regras", "- Não criar contas, enviar formulários ou aceitar termos.", "- Não inventar dados de empresa nem aprovações.", "- Saldos e datas de expiração dependem de confirmação individual.", "- Mudanças no texto da página podem ser apenas marketing, rodapé ou layout."]
+    lines += ["", "## Regras", "- Não criar contas, enviar formulários ou aceitar termos.", "- Perfil: pessoa física residente no Brasil, sem CNPJ. Identidade e elegibilidade não verificadas.", "- Proibido registrar CPF, RG, dados bancários, endereço, telefone ou e-mail no repositório público.", "- Não inventar dados de empresa nem aprovações.", "- Saldos e datas de expiração dependem de confirmação individual.", "- Mudanças no texto da página podem ser apenas marketing, rodapé ou layout."]
     REPORT.write_text("\n".join(lines) + "\n")
     # Saída interpretável pelo workflow sem depender de configuração privada.
     if os.getenv("GITHUB_OUTPUT"):
