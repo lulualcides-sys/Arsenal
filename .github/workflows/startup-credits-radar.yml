@@ -1,0 +1,43 @@
+name: Radar de Créditos de Startup
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 11 * * *" # 08:17 America/Sao_Paulo
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: startup-credits-radar
+  cancel-in-progress: false
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Consultar fontes oficiais
+        id: scan
+        run: python toolkits/startup-credits-radar/monitor.py
+      - name: Publicar relatório no resumo do job
+        if: always()
+        run: cat toolkits/startup-credits-radar/latest-report.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Atualizar histórico de monitoramento
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add toolkits/startup-credits-radar/state.json toolkits/startup-credits-radar/latest-report.md
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: atualizar radar de créditos [skip ci]"
+            git push
+          fi
+      - name: Abrir aviso para revisão, sem inscrição automática
+        if: steps.scan.outputs.changes != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --title "Radar startup: possíveis mudanças em programas de créditos" --body-file toolkits/startup-credits-radar/latest-report.md
