@@ -1,0 +1,34 @@
+[
+  {
+    "id": "aws-activate",
+    "name": "AWS Activate",
+    "url": "https://aws.amazon.com/startups/credits/",
+    "published_initial_usd": 1000,
+    "application_status": "nao_iniciada",
+    "eligibility": "nao_verificada"
+  },
+  {
+    "id": "google-start",
+    "name": "Google for Startups Cloud",
+    "url": "https://cloud.google.com/startup/pre-funded",
+    "published_initial_usd": 2000,
+    "application_status": "nao_iniciada",
+    "eligibility": "nao_verificada"
+  },
+  {
+    "id": "cloudflare-startups",
+    "name": "Cloudflare for Startups",
+    "url": "https://www.cloudflare.com/startups/",
+    "published_initial_usd": null,
+    "application_status": "nao_iniciada",
+    "eligibility": "nao_verificada"
+  },
+  {
+    "id": "microsoft-startups",
+    "name": "Microsoft for Startups",
+    "url": "https://learn.microsoft.com/en-us/startups/microsoft-for-startups/overview",
+    "published_initial_usd": null,
+    "application_status": "nao_iniciada",
+    "eligibility": "nao_verificada"
+  }
+]
