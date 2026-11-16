@@ -11,8 +11,8 @@ import urllib.request
 from html.parser import HTMLParser
 from pathlib import Path
 
-KEYWORDS = re.compile(r"credit|cr[eé]dit|eligib|requisit|criteria|qualif|funded|founder|founded|startup|business email|valid|expire|expir|funding|financi|\\$[0-9]", re.I)
-SPACES = re.compile(r"\\s+")
+KEYWORDS = re.compile(r"credit|cr[eé]dit|eligib|requisit|criteria|qualif|funded|founder|founded|startup|business email|valid|expire|expir|funding|financi|\$[0-9]", re.I)
+SPACES = re.compile(r"\s+")
 MAX_MATCHES = 65
 
 class VisibleText(HTMLParser):
@@ -39,7 +39,7 @@ def fragments(html):
     return sorted(candidates)[:MAX_MATCHES]
 
 def digest(parts):
-    return hashlib.sha256('\\n'.join(parts).encode('utf-8')).hexdigest()
+    return hashlib.sha256('\n'.join(parts).encode('utf-8')).hexdigest()
 
 def fetch(url):
     req = urllib.request.Request(url, headers={'User-Agent':'StartupCreditRadar/1.0 (+official-public-source-monitor)','Accept':'text/html'})
@@ -83,7 +83,7 @@ def report(changes, failures, checked):
         out += [f"- {x['name']}: {x['error']} ({x['url']})" for x in failures]
         out += ['']
     out += ['## Regras de segurança', '- Não há inscrição automática, transferência de créditos, coleta de dados pessoais nem confirmação de aprovação.', '- Valores anunciados não são saldos de crédito recebidos.', '- Dados da empresa e decisões de inscrição devem permanecer fora deste repositório público.', '']
-    return '\\n'.join(out)
+    return '\n'.join(out)
 
 def main():
     ap = argparse.ArgumentParser()
@@ -96,11 +96,11 @@ def main():
     prev = json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
     state, changes, errors, checked = scan(programs, prev)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\\n',encoding='utf-8')
+    path.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     Path(args.report).write_text(report(changes, errors, checked),encoding='utf-8')
     if os.getenv('GITHUB_OUTPUT'):
         with open(os.environ['GITHUB_OUTPUT'],'a',encoding='utf-8') as out:
-            out.write(f"changed={'true' if changes else 'false'}\\n")
+            out.write(f"changed={'true' if changes else 'false'}\n")
     print(f'checked={len(checked)}, changes={len(changes)}, failures={len(errors)}')
 
 if __name__ == '__main__':
