@@ -1,11 +1,11 @@
 # Radar de créditos — última execução
 
-Verificado em UTC: 2026-11-16T21:03:56.509428+00:00
+Verificado em UTC: 2026-11-17T19:52:46.125305+00:00
 
 O monitor detecta alterações em páginas públicas. **Não confirma créditos, elegibilidade, valores ou prazos; exige revisão manual.**
 
 ## Alterações para verificar
-Nenhuma mudança textual detectada nas fontes acessíveis.
+- **Possível alteração (revisão manual):** [Azure Free Account](https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account)
 
 ## Fontes
 | Programa | Status de acesso | URL |

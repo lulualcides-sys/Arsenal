@@ -1,23 +1,23 @@
 {
   "https://aws.amazon.com/free/free-tier-faqs/": {
     "fingerprint": "161e744b6d324e15ce301b8302c8a40f0485a1fb3105ee3bc1f34c67ba3bef6a",
-    "last_checked_utc": "2026-11-16T21:03:56.509428+00:00",
+    "last_checked_utc": "2026-11-17T19:52:46.125305+00:00",
     "length": 16739,
     "name": "AWS Free Tier",
     "status": "ok",
     "url": "https://aws.amazon.com/free/free-tier-faqs/"
   },
   "https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account": {
-    "fingerprint": "054b4875128aad9ccefae6eac0e71ed329c4f6127d9562a80cae0547e3b26db6",
-    "last_checked_utc": "2026-11-16T21:03:56.509428+00:00",
-    "length": 23502,
+    "fingerprint": "5fadaad41839e149b6e9c5ba64c6a58d68fc98b3af8d413d588c1c6a0e37aacd",
+    "last_checked_utc": "2026-11-17T19:52:46.125305+00:00",
+    "length": 23503,
     "name": "Azure Free Account",
     "status": "ok",
     "url": "https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account"
   },
   "https://cloud.google.com/free": {
     "fingerprint": "903264e6d2005585f4028f1944e659cc1cc9839ee79d89b4d90210459515477c",
-    "last_checked_utc": "2026-11-16T21:03:56.509428+00:00",
+    "last_checked_utc": "2026-11-17T19:52:46.125305+00:00",
     "length": 44493,
     "name": "Google Cloud Free",
     "status": "ok",
@@ -25,7 +25,7 @@
   },
   "https://cloud.google.com/signup-faqs?hl=pt-BR": {
     "fingerprint": "cf7f9e94dfd418a368c1a6f10937783968089c5264635b930f18100e9d5cb8c8",
-    "last_checked_utc": "2026-11-16T21:03:56.509428+00:00",
+    "last_checked_utc": "2026-11-17T19:52:46.125305+00:00",
     "length": 52007,
     "name": "Google Cloud Free Trial FAQ",
     "status": "ok",
@@ -33,7 +33,7 @@
   },
   "https://developers.cloudflare.com/workers/platform/limits/": {
     "fingerprint": "bd5302271bc0d45a9f5a90285b6d0481c066fff67542cb0ae41c0293588863bf",
-    "last_checked_utc": "2026-11-16T21:03:56.509428+00:00",
+    "last_checked_utc": "2026-11-17T19:52:46.125305+00:00",
     "length": 27476,
     "name": "Cloudflare Workers Free",
     "status": "ok",
@@ -41,7 +41,7 @@
   },
   "https://docs.github.com/pt/education/about-github-education/github-education-for-students/github-terms-and-conditions-for-the-student-developer-pack": {
     "fingerprint": "cc3c9062ff5159873c1ca4b3882f5c0b845023ec784c529bf8a53d5e2bfc6bc0",
-    "last_checked_utc": "2026-11-16T21:03:56.509428+00:00",
+    "last_checked_utc": "2026-11-17T19:52:46.125305+00:00",
     "length": 5377,
     "name": "GitHub Student Developer Pack",
     "status": "ok",
@@ -49,7 +49,7 @@
   },
   "https://www.oracle.com/br/cloud/free/faq/": {
     "fingerprint": "30d33212e72132600d914dfa722995fbb219df9f8adfe824f4a1c3d103ccf07e",
-    "last_checked_utc": "2026-11-16T21:03:56.509428+00:00",
+    "last_checked_utc": "2026-11-17T19:52:46.125305+00:00",
     "length": 19703,
     "name": "Oracle Cloud Free Tier Brasil",
     "status": "ok",
