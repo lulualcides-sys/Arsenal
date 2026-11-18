@@ -1,11 +1,12 @@
 # Radar de créditos — última execução
 
-Verificado em UTC: 2026-11-17T19:52:46.125305+00:00
+Verificado em UTC: 2026-11-18T19:25:17.340632+00:00
 
 O monitor detecta alterações em páginas públicas. **Não confirma créditos, elegibilidade, valores ou prazos; exige revisão manual.**
 
 ## Alterações para verificar
 - **Possível alteração (revisão manual):** [Azure Free Account](https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account)
+- **Possível alteração (revisão manual):** [Cloudflare Workers Free](https://developers.cloudflare.com/workers/platform/limits/)
 
 ## Fontes
 | Programa | Status de acesso | URL |
