@@ -102,3 +102,6 @@
 [submodule "fontes/ferramentas/svg-js"]
 	path = fontes/ferramentas/svg-js
 	url = https://github.com/svgdotjs/svg.js.git
+[submodule "fontes/ferramentas/openjarvis"]
+	path = fontes/ferramentas/openjarvis
+	url = https://github.com/open-jarvis/OpenJarvis.git

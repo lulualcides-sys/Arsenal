@@ -247,5 +247,8 @@ A lista original inclui também ideias de produtos, serviços sem código e prog
 | Nº acumulado | Projeto | Situação no Arsenal | Área | Uso sugerido |
 |---:|---|---|---|---|
 | 205 | [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute) | [Referência técnica catalogada](OMNIROUTE.md) (não instalado) | Dev/IA, NEXUS, WildVox, Pokémon Torre | Gateway multi-LLM com fallback, controle de cotas e MCP/A2A; testar em ambiente isolado |
+| 206 | [open-jarvis/OpenJarvis](https://github.com/open-jarvis/OpenJarvis) | [Código vinculado](../fontes/ferramentas/openjarvis) · [análise](OPENJARVIS-IA-LOCAL-AGENTES-2026-11-19.md) (não instalado no PC) | Dev/IA, Pokémon Torre, WildVox | Agentes de IA locais sobre Ollama/llama.cpp; piloto com chat-simple |
 
-**Total documentado até 14/10/2026: 205 repositórios únicos (204 históricos + OmniRoute).** Os 32 submódulos históricos permanecem inalterados. Esta inclusão não significa instalação ou integração em produção.
+**Total documentado até 14/10/2026: 205 repositórios únicos (204 históricos + OmniRoute).**
+
+**Total documentado até 19/11/2026: 206 repositórios únicos** — inclusão do OpenJarvis (nº 206), vinculado como submódulo Git. Os 32 submódulos históricos permanecem inalterados. Esta inclusão não significa instalação ou integração em produção.

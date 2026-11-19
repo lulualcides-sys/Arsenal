@@ -1,5 +1,9 @@
 # ARSENAL — Biblioteca de código, ferramentas e pesquisas
 
+## OpenJarvis — agentes de IA locais (19/11/2026)
+
+**[OpenJarvis: framework de agentes pessoais locais — teste, cautelas e piloto](ferramentas/OPENJARVIS-IA-LOCAL-AGENTES-2026-11-19.md)** — [origem oficial open-jarvis/OpenJarvis](https://github.com/open-jarvis/OpenJarvis) (Apache-2.0, Stanford). **Código vinculado como submódulo** em [fontes/ferramentas/openjarvis](fontes/ferramentas/openjarvis) (commit `c3ed63f`). Pacote 1.0.4 instalado e `jarvis doctor` executado em ambiente isolado; **conversa com modelo não testada e nada instalado no PC ou integrado aos projetos**. Cautela: inclui comandos de mineração de cripto (`jarvis mine`/`pearl`), que não devem ser usados.
+
 ## AutoClip e Postiz — Nexus Clips BR (16/11/2026)
 
 **[Curadoria técnica: AutoClip (MIT) + Postiz (AGPL-3.0)](ferramentas/AUTOCLIP-POSTIZ-NEXUS-CLIPS-2026-11-16.md)** — edição local de clipes e agendamento/publicação social como opções para o projeto GTA-6-clips do Astra. **Catalogados, sem instalação ou integração**; piloto isolado, direitos, testes, comparação com o editor e a fila existentes e controle de custos são obrigatórios.
