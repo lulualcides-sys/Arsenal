@@ -1,12 +1,13 @@
 # Radar de créditos — última execução
 
-Verificado em UTC: 2026-11-18T19:25:17.340632+00:00
+Verificado em UTC: 2026-11-19T19:29:48.642836+00:00
 
 O monitor detecta alterações em páginas públicas. **Não confirma créditos, elegibilidade, valores ou prazos; exige revisão manual.**
 
 ## Alterações para verificar
 - **Possível alteração (revisão manual):** [Azure Free Account](https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account)
 - **Possível alteração (revisão manual):** [Cloudflare Workers Free](https://developers.cloudflare.com/workers/platform/limits/)
+- **Possível alteração (revisão manual):** [GitHub Student Developer Pack](https://docs.github.com/pt/education/about-github-education/github-education-for-students/github-terms-and-conditions-for-the-student-developer-pack)
 
 ## Fontes
 | Programa | Status de acesso | URL |
