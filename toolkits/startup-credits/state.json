@@ -41,11 +41,11 @@
       "We'll ask a few details about your product, funding stage, and company profile to confirm eligibility.",
       "Whether you're building an AI-native product with Amazon Bedrock or using Kiro to accelerate development, promotional credits help you get from idea to launch. Start building on day one."
     ],
-    "checked_utc": "2026-11-19T19:12:57.599258+00:00",
+    "checked_utc": "2026-11-20T18:53:31.819155+00:00",
     "url": "https://aws.amazon.com/startups/credits/"
   },
   "google-start": {
-    "sha256": "659b9214a98020f8f6b47e5d0238552b3047c416ab5fcc97da0543734d19da52",
+    "sha256": "a22b6d7fa932669cb250fbd03afafb5fe5d01c0d1194dcfbc17a0a46202bf297",
     "samples": [
       "$300 in free credits and 20+ free products.",
       "*Credits can be applied toward eligible products in the",
@@ -72,7 +72,6 @@
       "Get best-practices, technical insights and a community of fellow founders and Google experts building the future of AI at the Gemini Startup Forum.",
       "Get financial, business, and technical support to take your startup to the next level.",
       "Google Cloud assesses startups based on funding stage, funding type, business model, founder experience, and product usage. We also consider additional information like your company vertical, age, growth trajectory, and so on. Our program e",
-      "Google Cloud for Startups",
       "Google for Startups Cloud Program",
       "Google for Startups Cloud Program | Google Cloud",
       "How does Google Cloud decide whether my startup gets accepted and how many credits it receives?",
@@ -103,7 +102,7 @@
       "domain, to ensure the account receiving credits is the same as the company applying. Please check to ensure you are using the right email address and billing account before you submit your application.",
       "where you can review your past and current credits. Program qualifications change annually, and enrollment in a previous year does not guarantee re-enrollment or eligibility for the current year."
     ],
-    "checked_utc": "2026-11-19T19:12:57.599258+00:00",
+    "checked_utc": "2026-11-20T18:53:31.819155+00:00",
     "url": "https://cloud.google.com/startup/pre-funded"
   },
   "cloudflare-startups": {
@@ -163,7 +162,7 @@
       "startups@cloudflare.com",
       "your 1-year program expiration date. The additional credits will still expire at the end of your original 12-month cohort window."
     ],
-    "checked_utc": "2026-11-19T19:12:57.599258+00:00",
+    "checked_utc": "2026-11-20T18:53:31.819155+00:00",
     "url": "https://www.cloudflare.com/startups/"
   },
   "microsoft-startups": {
@@ -189,7 +188,7 @@
       "What is Microsoft for Startups? | Microsoft Learn",
       "startups.microsoft.com"
     ],
-    "checked_utc": "2026-11-19T19:12:57.599258+00:00",
+    "checked_utc": "2026-11-20T18:53:31.819155+00:00",
     "url": "https://learn.microsoft.com/en-us/startups/microsoft-for-startups/overview"
   }
 }
