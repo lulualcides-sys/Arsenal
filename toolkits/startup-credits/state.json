@@ -1,10 +1,11 @@
 {
   "aws-activate": {
-    "sha256": "cef27b42dd61d7310eee1c67406db7c52b7bb217cdbe064fafb13c652ccf3019",
+    "sha256": "e456edeb2a4c7171ad99748fffde51037829e2b679a83f51ee5cdc36776ed0cb",
     "samples": [
-      "$200,000+ in AWS Credits",
+      "$200,000+ USD in AWS Credits",
       "(Available to eligible startups without current Activate Credits)",
       "*All AWS Activate Credits are in USD and subject to the",
+      "*Our investment scales with the size of the startup's workload. We have deployed credit offers to startups ranging from thousands into the millions.",
       "*Start with $1,000 USD in Activate Credits. Select participants may qualify for additional credits up to $5,000",
       "AI for Startups",
       "AI-powered assessments and end-to-end expert guidance make moving to AWS simple. Get AWS investments, in the form AWS credits or partner investments, to help customers offset one-time migration expenses. Focus on building, not logistics.",
@@ -28,7 +29,6 @@
       "From startups to enterprises, find AWS solutions scaled to your needs. Access tailored resources, pricing models, and support levels.",
       "Here's what you need to know to apply for Activate Credits:",
       "How today’s startups build for tomorrow",
-      "Invite only for startups ready to scale post Activate Portfolio",
       "Move from prototype to production faster. Apply for up to $200,000 in AWS Activate Credits, with additional credits available for AI startups ready to scale.",
       "See what founders are building with AWS Activate Credits",
       "Self-funded? Apply for Activate Founders. Backed by a VC or accelerator? Check if they're an Activate Provider and use their Org ID to apply for the Activate Portfolio.",
@@ -41,7 +41,7 @@
       "We'll ask a few details about your product, funding stage, and company profile to confirm eligibility.",
       "Whether you're building an AI-native product with Amazon Bedrock or using Kiro to accelerate development, promotional credits help you get from idea to launch. Start building on day one."
     ],
-    "checked_utc": "2026-11-20T18:53:31.819155+00:00",
+    "checked_utc": "2026-11-21T17:48:07.191456+00:00",
     "url": "https://aws.amazon.com/startups/credits/"
   },
   "google-start": {
@@ -102,7 +102,7 @@
       "domain, to ensure the account receiving credits is the same as the company applying. Please check to ensure you are using the right email address and billing account before you submit your application.",
       "where you can review your past and current credits. Program qualifications change annually, and enrollment in a previous year does not guarantee re-enrollment or eligibility for the current year."
     ],
-    "checked_utc": "2026-11-20T18:53:31.819155+00:00",
+    "checked_utc": "2026-11-21T17:48:07.191456+00:00",
     "url": "https://cloud.google.com/startup/pre-funded"
   },
   "cloudflare-startups": {
@@ -162,7 +162,7 @@
       "startups@cloudflare.com",
       "your 1-year program expiration date. The additional credits will still expire at the end of your original 12-month cohort window."
     ],
-    "checked_utc": "2026-11-20T18:53:31.819155+00:00",
+    "checked_utc": "2026-11-21T17:48:07.191456+00:00",
     "url": "https://www.cloudflare.com/startups/"
   },
   "microsoft-startups": {
@@ -188,7 +188,7 @@
       "What is Microsoft for Startups? | Microsoft Learn",
       "startups.microsoft.com"
     ],
-    "checked_utc": "2026-11-20T18:53:31.819155+00:00",
+    "checked_utc": "2026-11-21T17:48:07.191456+00:00",
     "url": "https://learn.microsoft.com/en-us/startups/microsoft-for-startups/overview"
   }
 }
