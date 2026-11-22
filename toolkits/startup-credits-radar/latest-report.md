@@ -1,11 +1,10 @@
 # Radar de créditos — última execução
 
-Verificado em UTC: 2026-11-21T17:59:59.159319+00:00
+Verificado em UTC: 2026-11-22T18:32:43.258380+00:00
 
 O monitor detecta alterações em páginas públicas. **Não confirma créditos, elegibilidade, valores ou prazos; exige revisão manual.**
 
 ## Alterações para verificar
-- **Possível alteração (revisão manual):** [Google Cloud Free Trial FAQ](https://cloud.google.com/signup-faqs?hl=pt-BR)
 - **Possível alteração (revisão manual):** [Azure Free Account](https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account)
 
 ## Fontes
