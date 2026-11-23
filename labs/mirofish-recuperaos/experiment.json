@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "experiment": "recuperaos-mi0",
+  "date": "2026-11-09",
+  "type": "synthetic_hypothesis_test_only",
+  "agent_target": {
+    "total": 30,
+    "personas": {
+      "owners": 12,
+      "operations": 8,
+      "finance": 6,
+      "accountants": 4
+    }
+  },
+  "pricing_brl_per_month": [
+    149,
+    249,
+    399
+  ],
+  "messages": [
+    "Dinheiro potencialmente não faturado nas OS",
+    "Conferência documentada OS-contratos-faturas"
+  ],
+  "max_rounds": 12,
+  "max_estimated_api_spend_brl": 0,
+  "real_customers": 0,
+  "execution_policy": "Install/smoke-test only without keys. Manual supervised run requires separate LLM_API_KEY and ZEP_API_KEY plus an enforced spending cap.",
+  "success_criteria": [
+    "Report synthetic objections separately from data",
+    "Identify at least three falsifiable commercial assumptions",
+    "No claims of real conversion or recovered revenue"
+  ]
+}
