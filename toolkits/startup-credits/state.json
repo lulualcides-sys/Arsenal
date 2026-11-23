@@ -41,7 +41,7 @@
       "We'll ask a few details about your product, funding stage, and company profile to confirm eligibility.",
       "Whether you're building an AI-native product with Amazon Bedrock or using Kiro to accelerate development, promotional credits help you get from idea to launch. Start building on day one."
     ],
-    "checked_utc": "2026-11-22T18:06:21.129420+00:00",
+    "checked_utc": "2026-11-23T22:16:18.358795+00:00",
     "url": "https://aws.amazon.com/startups/credits/"
   },
   "google-start": {
@@ -102,11 +102,11 @@
       "domain, to ensure the account receiving credits is the same as the company applying. Please check to ensure you are using the right email address and billing account before you submit your application.",
       "where you can review your past and current credits. Program qualifications change annually, and enrollment in a previous year does not guarantee re-enrollment or eligibility for the current year."
     ],
-    "checked_utc": "2026-11-22T18:06:21.129420+00:00",
+    "checked_utc": "2026-11-23T22:16:18.358795+00:00",
     "url": "https://cloud.google.com/startup/pre-funded"
   },
   "cloudflare-startups": {
-    "sha256": "55e14cbc0e0cbfbcf5e2ec8986e672c5ee9de15d6e49228f8a5ee60d78a90b7b",
+    "sha256": "7696aa468c4706655d426ef5452a15e2559c0b704fdc0506ca2c5aee0f9e066f",
     "samples": [
       "Access expanded $100k in credits, an account manager, and technical sessions with Cloudflare experts.",
       "All tiers include priority ticket support and chat. If you ever need help escalating an issue, simply share your ticket number with the startup team. Additional support varies by tier:",
@@ -115,7 +115,8 @@
       "Can I get upgraded to the new credit tiers?",
       "Cloudflare for Startups gives early-stage companies up to $350k in credits to build the next big idea. Startups get access to our developer platform and global network to build fast, secure, and scalable applications.",
       "Covered by Credits",
-      "Covered up to a $10,000 cap.",
+      "Covered up to a $2,500 cap for Tier 3, $10,000 for Tier 2, and $50,000 for Tier 1.",
+      "Covered up to a $2,500 cap for Tier 3, $5,000 for Tier 2, and $10,000 for Tier 1.",
       "Credits are valid for one year or until fully consumed, whichever comes first. We are not able to approve extensions at this time. Mark the date you received your confirmation email on your calendar, so you're not caught off guard when you ",
       "Credits cover usage-based services. Core security and networking features are included at no cost, regardless of tier.",
       "Credits: $100k",
@@ -136,6 +137,7 @@
       "If your startup has scaled and you would like to remain on an Enterprise plan, please reach out to our team prior to graduation to discuss pricing and options.",
       "Is the program available more than once, or can I transfer my credits?",
       "No Expiry Extension:",
+      "Not covered by credits.",
       "Once your credits are confirmed, all eligible usage-based features will be automatically deducted from your credit balance or applied at no cost as a program benefit. Core security and networking features are included entirely for free acro",
       "Our team will always provide a reason for the decision. If you believe you qualify and can provide supporting information, we're happy to re-evaluate your application.",
       "R2 (up to $10,000)",
@@ -158,11 +160,10 @@
       "Your startup has a public social media presence",
       "covered by credits. For existing startups until Dec 1: Workers AI is covered up to a $2,500 cap for Tier 3, $10,000 for Tier 2, and $50,000 for Tier 1 (standard partner model pricing applies).",
       "including these terms) at any time without notice. We reserve the right to suspend or terminate your access to the program. Credits are non-transferable, nonrefundable, non-redeemable for cash, and may not be sold, purchased, or bartered. Y",
-      "not covered by credits. We are actively working to make it accessible.",
       "startups@cloudflare.com",
       "your 1-year program expiration date. The additional credits will still expire at the end of your original 12-month cohort window."
     ],
-    "checked_utc": "2026-11-22T18:06:21.129420+00:00",
+    "checked_utc": "2026-11-23T22:16:18.358795+00:00",
     "url": "https://www.cloudflare.com/startups/"
   },
   "microsoft-startups": {
@@ -188,7 +189,7 @@
       "What is Microsoft for Startups? | Microsoft Learn",
       "startups.microsoft.com"
     ],
-    "checked_utc": "2026-11-22T18:06:21.129420+00:00",
+    "checked_utc": "2026-11-23T22:16:18.358795+00:00",
     "url": "https://learn.microsoft.com/en-us/startups/microsoft-for-startups/overview"
   }
 }
