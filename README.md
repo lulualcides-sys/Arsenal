@@ -1,5 +1,9 @@
 # ARSENAL — Biblioteca de código, ferramentas e pesquisas
 
+## Estudo comparativo: Pokeborne Android → controles e desempenho do Pokémon Torre 2 (25/11/2026)
+
+**[Auditoria técnica e plano de melhorias](ferramentas/POKEBORNE-TORRE2-ESTUDO-CONTROLES-DESEMPENHO-2026-11-25.md)** — análise do editor de layout touch, curva do analógico e ajuste de renderização do Pokeborne contra o joystick, controles, testes e pipeline Phaser/PixiJS do Torre 2. **Recomendações priorizadas:** editor de controles, calibração opcional do analógico, perfis de qualidade, carregamento tardio de efeitos e validação de gamepad físico. **Pesquisa apenas:** nenhum código do jogo foi alterado; o relatório distingue a campanha Phaser gerada no workflow do laboratório PixiJS mantido em `/lab.html`.
+
 ## Pokeborne Android — port para Android (25/11/2026)
 
 **[Estudo técnico, recursos, requisitos e cautelas de licença](ferramentas/POKEBORNE-ANDROID-ANDROID-PORT-2026-11-25.md)** — [JayElDragon/Pokeborne-Android](https://github.com/JayElDragon/Pokeborne-Android), wrapper Android em WebView para o jogo web Pokeborne, com execução offline após preparar o espelho local, controles touch/gamepad e ajustes de 60/120 Hz. **Somente catalogado como referência:** o repositório contém o código do port, não os arquivos do jogo; não identificamos licença na raiz. Não copiamos código, ativos, APK ou espelho do jogo, não criamos submódulo e não alteramos Pokémon Torre 2.
