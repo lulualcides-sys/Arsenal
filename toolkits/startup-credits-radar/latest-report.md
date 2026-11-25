@@ -1,11 +1,13 @@
 # Radar de créditos — última execução
 
-Verificado em UTC: 2026-11-24T21:16:04.466705+00:00
+Verificado em UTC: 2026-11-25T20:29:30.179981+00:00
 
 O monitor detecta alterações em páginas públicas. **Não confirma créditos, elegibilidade, valores ou prazos; exige revisão manual.**
 
 ## Alterações para verificar
+- **Possível alteração (revisão manual):** [Oracle Cloud Free Tier Brasil](https://www.oracle.com/br/cloud/free/faq/)
 - **Possível alteração (revisão manual):** [Azure Free Account](https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account)
+- **Possível alteração (revisão manual):** [Cloudflare Workers Free](https://developers.cloudflare.com/workers/platform/limits/)
 
 ## Fontes
 | Programa | Status de acesso | URL |
