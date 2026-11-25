@@ -1,5 +1,9 @@
 # ARSENAL — Biblioteca de código, ferramentas e pesquisas
 
+## Pokeborne Android — port para Android (25/11/2026)
+
+**[Estudo técnico, recursos, requisitos e cautelas de licença](ferramentas/POKEBORNE-ANDROID-ANDROID-PORT-2026-11-25.md)** — [JayElDragon/Pokeborne-Android](https://github.com/JayElDragon/Pokeborne-Android), wrapper Android em WebView para o jogo web Pokeborne, com execução offline após preparar o espelho local, controles touch/gamepad e ajustes de 60/120 Hz. **Somente catalogado como referência:** o repositório contém o código do port, não os arquivos do jogo; não identificamos licença na raiz. Não copiamos código, ativos, APK ou espelho do jogo, não criamos submódulo e não alteramos Pokémon Torre 2.
+
 ## AutoClip e Postiz — Nexus Clips BR (16/11/2026)
 
 **[Curadoria técnica: AutoClip (MIT) + Postiz (AGPL-3.0)](ferramentas/AUTOCLIP-POSTIZ-NEXUS-CLIPS-2026-11-16.md)** — edição local de clipes e agendamento/publicação social como opções para o projeto GTA-6-clips do Astra. **Catalogados, sem instalação ou integração**; piloto isolado, direitos, testes, comparação com o editor e a fila existentes e controle de custos são obrigatórios.
