@@ -1,6 +1,6 @@
 # Radar de créditos — última execução
 
-Verificado em UTC: 2026-11-26T20:12:18.529059+00:00
+Verificado em UTC: 2026-11-27T19:59:18.711566+00:00
 
 O monitor detecta alterações em páginas públicas. **Não confirma créditos, elegibilidade, valores ou prazos; exige revisão manual.**
 
